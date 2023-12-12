@@ -4,13 +4,12 @@ plugins {
 }
 
 android {
-    namespace = "com.promofusion"
+    namespace = "com.promos-fusion"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.promofusion"
+        applicationId = "com.promos-fusion"
         minSdk = 24
-        //noinspection EditedTargetSdkVersion
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
