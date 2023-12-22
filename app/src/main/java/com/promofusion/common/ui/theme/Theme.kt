@@ -47,6 +47,8 @@ private val darkModeScheme = darkColorScheme(
 
     outline = Neutral800,
     outlineVariant = Neutral700,
+
+    scrim = Neutral600
 )
 
 private val lightModeScheme = lightColorScheme(
@@ -85,6 +87,8 @@ private val lightModeScheme = lightColorScheme(
 
     outline = Neutral200,
     outlineVariant = Neutral300,
+
+    scrim = Neutral400
 )
 
 @Composable
@@ -95,11 +99,6 @@ fun PromoFusionTheme(
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
-//        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-//            val context = LocalContext.current
-//            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-//        }
-
         darkTheme -> darkModeScheme
         else -> lightModeScheme
     }
@@ -121,6 +120,4 @@ fun PromoFusionTheme(
         typography = Typography,
         content = content
     )
-
-    println(colorScheme === lightModeScheme)
 }
