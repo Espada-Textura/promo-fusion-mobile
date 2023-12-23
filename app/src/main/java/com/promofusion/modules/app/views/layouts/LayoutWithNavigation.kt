@@ -1,4 +1,4 @@
-package com.promofusion.modules.app.views
+package com.promofusion.modules.app.views.layouts
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -17,5 +17,4 @@ fun LayoutWithNavigation(
     Scaffold(bottomBar = { BottomNavigationBar(navHostController = navHostController) }) { paddingValue ->
         content(Modifier.padding(paddingValue))
     }
-
 }
