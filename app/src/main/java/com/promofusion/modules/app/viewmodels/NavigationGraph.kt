@@ -9,7 +9,7 @@ import com.promofusion.modules.app.fragments.home.views.HomeScreen
 import com.promofusion.modules.app.fragments.scan.views.ScanScreen
 import com.promofusion.modules.app.fragments.settings.views.SettingsScreen
 import com.promofusion.modules.app.fragments.subscriptions.views.SubscriptionsScreen
-import com.promofusion.modules.app.views.LayoutWithNavigation
+import com.promofusion.modules.app.views.layouts.LayoutWithNavigation
 
 
 @Composable
