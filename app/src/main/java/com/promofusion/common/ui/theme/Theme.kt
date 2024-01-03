@@ -7,7 +7,6 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
@@ -53,7 +52,7 @@ private val darkModeScheme = darkColorScheme(
 
 private val lightModeScheme = lightColorScheme(
 
-    background = Color.White,
+    background = Neutral100,
     onBackground = Neutral950,
 
     surface = Neutral50,
