@@ -4,10 +4,11 @@
 
     <style name="Theme.SplashScreen.Starting" parent="Theme.SplashScreen">
         <!-- Set the splash screen background to white -->
-        <item name="windowSplashScreenIconBackgroundColor">@android:color/transparent</item>
+        <item name="windowSplashScreenBackground">@color/Red500</item>
+        <item name="windowSplashScreenIconBackgroundColor">@android:color/white</item>
         <!-- Use windowSplashScreenAnimatedIcon to add a drawable or an animated
              drawable. -->
-        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_coupon_line</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_logo</item>
         <!-- Set the theme of the Activity that follows your splash screen. -->
         <item name="postSplashScreenTheme">@style/Theme.SplashScreen</item>
     </style>
