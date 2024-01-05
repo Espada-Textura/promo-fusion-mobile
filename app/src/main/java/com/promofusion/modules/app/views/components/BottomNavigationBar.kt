@@ -35,7 +35,6 @@ fun BottomNavigationBar(
     navHostController: NavHostController
 ) {
 
-
     val navBackStackEntry by navHostController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
 
@@ -58,8 +57,7 @@ fun BottomNavigationBar(
                                 MaterialTheme.colorScheme.primary, shape = RoundedCornerShape(64.dp)
                             ),
                     ) {
-                        NavigationBarItem(
-                            selected = currentDestination?.hierarchy?.any { it.route == item.route } == true,
+                        NavigationBarItem(selected = currentDestination?.hierarchy?.any { it.route == item.route } == true,
                             onClick = {
                                 navHostController.navigate(item.route)
                             },
@@ -67,7 +65,8 @@ fun BottomNavigationBar(
                                 Icon(
                                     imageVector = ImageVector.vectorResource(
                                         item.unselectedIcon
-                                    ), contentDescription = item.title,
+                                    ),
+                                    contentDescription = item.title,
                                     modifier = Modifier.padding(0.dp, 16.dp)
                                 )
                             },
@@ -89,18 +88,13 @@ fun BottomNavigationBar(
                     BottomNavigationItemContainer(
                         modifier = Modifier.weight(1f)
                     ) {
-                        NavigationBarItem(
-                            selected = currentDestination?.hierarchy?.any { it.route == item.route } == true,
+                        NavigationBarItem(selected = currentDestination?.hierarchy?.any { it.route == item.route } == true,
                             onClick = {
                                 navHostController.navigate(item.route)
                             },
                             icon = {
-                                Icon(
-                                    imageVector = ImageVector.vectorResource(
-                                        if (currentDestination?.hierarchy?.any { it.route == item.route } == true) item.selectedIcon
-                                        else item.unselectedIcon
-                                    ), contentDescription = item.title
-                                )
+                                Icon(imageVector = ImageVector.vectorResource(if (currentDestination?.hierarchy?.any { it.route == item.route } == true) item.selectedIcon
+                                else item.unselectedIcon), contentDescription = item.title)
                             },
                             modifier = Modifier
                                 .fillMaxWidth()
