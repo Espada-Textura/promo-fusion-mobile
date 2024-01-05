@@ -16,12 +16,12 @@ val provider = GoogleFont.Provider(
     certificates = R.array.com_google_android_gms_fonts_certs
 )
 
-val firaSan = GoogleFont("Fira Sans")
+val inter = GoogleFont("Inter Tight")
 val lobster = GoogleFont("Lobster Two")
 
 val displayFontFamily = FontFamily(Font(googleFont = lobster, fontProvider = provider))
 val sansFontFamily = FontFamily(
-    Font(googleFont = firaSan, fontProvider = provider)
+    Font(googleFont = inter, fontProvider = provider)
 )
 
 

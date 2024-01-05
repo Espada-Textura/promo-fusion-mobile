@@ -1,6 +1,5 @@
 package com.promofusion.modules.app.views.components
 
-import android.graphics.DashPathEffect
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -34,7 +33,7 @@ fun CouponCardView(
     expiredAt: String,
     status: CouponStatus
 ) {
-    Surface (
+    Surface(
         modifier = Modifier
             .fillMaxWidth()
             .height(128.dp)
@@ -42,20 +41,20 @@ fun CouponCardView(
             .shadow(8.dp),
         shape = RoundedCornerShape(16.dp),
         color = Color.White,
-    ){
-        Row (
+    ) {
+        Row(
 //            horizontalAlignment = Alignment.CenterHorizontally,
 //            verticalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
-        ){
+        ) {
             Image(
                 painter = painterResource(id = com.promofusion.R.drawable.ic_coupon_fill),
                 contentDescription = "Shop Logo"
             )
             Spacer(modifier = Modifier.width(8.dp))
             Spacer(modifier = Modifier.width(8.dp))
-            Column (
+            Column(
                 horizontalAlignment = Alignment.Start,
                 verticalArrangement = Arrangement.Center
             ) {
@@ -91,5 +90,5 @@ fun ReusableCardViewPreview() {
         "25%",
         "20 Jan 2024",
         CouponStatus.Valid
-    );
+    )
 }
