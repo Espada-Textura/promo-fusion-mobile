@@ -7,8 +7,12 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.promofusion.modules.main.fragments.coupons.views.CouponsScreen
 import com.promofusion.modules.main.fragments.home.views.HomeScreen
-import com.promofusion.modules.navigations.views.ui.BottomNavigationBar
+import com.promofusion.modules.main.fragments.scan.views.ScanScreen
+import com.promofusion.modules.main.fragments.settings.views.SettingsScreen
+import com.promofusion.modules.main.fragments.subscriptions.views.SubscriptionsScreen
+import com.promofusion.modules.navigations.views.components.BottomNavigationBar
 
 
 @Composable
@@ -25,6 +29,22 @@ fun NavigationGraph() {
 
             composable(route = "home") {
                 HomeScreen()
+            }
+
+            composable(route = "shops") {
+                SubscriptionsScreen()
+            }
+
+            composable(route = "scan") {
+                ScanScreen()
+            }
+
+            composable(route = "coupons") {
+                CouponsScreen()
+            }
+
+            composable(route = "settings") {
+                SettingsScreen()
             }
         }
     }

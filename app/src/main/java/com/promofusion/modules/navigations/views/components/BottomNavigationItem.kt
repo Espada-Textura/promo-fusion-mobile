@@ -1,4 +1,4 @@
-package com.promofusion.modules.navigations.views.ui
+package com.promofusion.modules.navigations.views.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row

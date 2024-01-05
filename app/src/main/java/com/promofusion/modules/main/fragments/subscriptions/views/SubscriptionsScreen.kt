@@ -1,4 +1,4 @@
-package com.promofusion.modules.main.fragments.home.views
+package com.promofusion.modules.main.fragments.subscriptions.views
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -13,9 +13,9 @@ import com.promofusion.common.components.HeaderTitle
 import com.promofusion.common.theme.PromoFusionTheme
 
 @Composable
-fun HomeScreen() {
+fun SubscriptionsScreen() {
     Column(modifier = Modifier.fillMaxWidth()) {
-        HeaderTitle(title = "Welcome back!", description = "Let's get your promotions", action = {
+        HeaderTitle(title = "Subscription", description = "Explore more shops", action = {
             IconButton(onClick = { }) {
                 Icon(
                     painter = (painterResource(id = R.drawable.ic_notification_line)),
@@ -29,9 +29,9 @@ fun HomeScreen() {
 
 @Preview(showBackground = true)
 @Composable
-fun HomeScreenPreview() {
+fun SubscriptionsScreenPreview() {
     PromoFusionTheme {
-        HomeScreen()
+        SubscriptionsScreen()
     }
 }
 

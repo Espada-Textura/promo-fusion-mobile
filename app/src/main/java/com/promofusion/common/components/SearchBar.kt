@@ -1,4 +1,4 @@
-package com.promofusion.modules.app.views.components
+package com.promofusion.common.components
 
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.ColumnScope

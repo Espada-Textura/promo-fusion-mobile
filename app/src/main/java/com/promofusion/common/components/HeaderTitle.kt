@@ -1,4 +1,4 @@
-package com.promofusion.modules.app.views.components
+package com.promofusion.common.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.promofusion.common.ui.theme.PromoFusionTheme
+import com.promofusion.common.theme.PromoFusionTheme
 
 @Composable
 fun HeaderTitle(
