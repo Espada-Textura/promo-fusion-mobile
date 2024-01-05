@@ -15,6 +15,7 @@ class MainActivity : ComponentActivity() {
         installSplashScreen()
 
         super.onCreate(savedInstanceState)
+        this.actionBar?.hide()
         setContent {
             PromoFusionTheme {
                 NavigationGraph()
