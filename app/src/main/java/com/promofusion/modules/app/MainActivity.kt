@@ -5,13 +5,16 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.promofusion.common.ui.theme.PromoFusionTheme
 import com.promofusion.modules.app.viewmodels.NavigationGraph
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+        //Splash Screen
+        installSplashScreen()
 
+        super.onCreate(savedInstanceState)
         setContent {
             PromoFusionTheme {
                 NavigationGraph()
