@@ -15,6 +15,7 @@ import com.promofusion.modules.app.viewmodels.NavigationGraph
 
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
@@ -25,7 +26,7 @@ import com.promofusion.common.ui.theme.lobster
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        //Splash Screen Transition
+        //Splash Screen
         installSplashScreen()
 
         super.onCreate(savedInstanceState)
@@ -35,24 +36,6 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun SplashScreenContent() {
-    Text(
-        modifier = Modifier
-            .width(200.dp)
-            .height(36.dp),
-        text = "PromoFusion",
-        style = TextStyle(
-            fontSize = 30.sp,
-            lineHeight = 36.sp,
-            fontWeight = FontWeight(700),
-            color = Color(0xFFFFF1F2),
-            textAlign = TextAlign.Center,
-        )
-    )
 }
 
 @Composable
