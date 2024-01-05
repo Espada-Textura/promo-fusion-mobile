@@ -21,7 +21,7 @@ val NavigationRouteItems = listOf(
         title = "Home",
         route = "home",
         selectedIcon = R.drawable.ic_home_4_fill,
-        unselectedIcon = R.drawable.ic_home_4_fill,
+        unselectedIcon = R.drawable.ic_home_4_line,
         badgeCount = 0,
         hasBadge = false,
     ),
@@ -30,7 +30,7 @@ val NavigationRouteItems = listOf(
         title = "Shops",
         route = "shops",
         selectedIcon = R.drawable.ic_sale_fill,
-        unselectedIcon = R.drawable.ic_sale_fill,
+        unselectedIcon = R.drawable.ic_sale_line,
         badgeCount = 0,
         hasBadge = false
     ),
@@ -39,7 +39,7 @@ val NavigationRouteItems = listOf(
         title = null,
         route = "scan",
         selectedIcon = R.drawable.ic_qrcode_2_fill,
-        unselectedIcon = R.drawable.ic_qrcode_2_fill,
+        unselectedIcon = R.drawable.ic_qrcode_2_line,
         badgeCount = 0,
         hasBadge = false,
         navigationType = NavigationType.ACTION_BUTTON
@@ -49,7 +49,7 @@ val NavigationRouteItems = listOf(
         title = "Coupons",
         route = "coupons",
         selectedIcon = R.drawable.ic_coupon_fill,
-        unselectedIcon = R.drawable.ic_coupon_fill,
+        unselectedIcon = R.drawable.ic_coupon_line,
         badgeCount = 0,
         hasBadge = false
     ),
@@ -58,7 +58,7 @@ val NavigationRouteItems = listOf(
         title = "Settings",
         route = "settings",
         selectedIcon = R.drawable.ic_settings_3_fill,
-        unselectedIcon = R.drawable.ic_settings_3_fill,
+        unselectedIcon = R.drawable.ic_settings_3_line,
         badgeCount = 0,
         hasBadge = false
     )
