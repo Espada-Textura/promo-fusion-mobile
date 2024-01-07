@@ -6,60 +6,60 @@ enum class NavigationType {
     NAVIGATION, ACTION_BUTTON
 }
 
-data class NavigationRoute(
+sealed class NavigationScreen(
     val title: String?,
     val route: String,
-    val unselectedIcon: Int,
-    val selectedIcon: Int,
-    val hasBadge: Boolean,
-    val badgeCount: Number,
+    val unselectedIcon: Int? = null,
+    val selectedIcon: Int? = null,
     val navigationType: NavigationType = NavigationType.NAVIGATION
-)
-
-val NavigationRouteItems = listOf(
-    NavigationRoute(
+) {
+    data object Home : NavigationScreen(
         title = "Home",
         route = "home",
         selectedIcon = R.drawable.ic_home_4_fill,
         unselectedIcon = R.drawable.ic_home_4_line,
-        badgeCount = 0,
-        hasBadge = false,
-    ),
+    )
 
-    NavigationRoute(
+    data object Shops : NavigationScreen(
         title = "Shops",
         route = "shops",
         selectedIcon = R.drawable.ic_sale_fill,
         unselectedIcon = R.drawable.ic_sale_line,
-        badgeCount = 0,
-        hasBadge = false
-    ),
+    )
 
-    NavigationRoute(
+    data object Scan : NavigationScreen(
         title = null,
         route = "scan",
         selectedIcon = R.drawable.ic_qrcode_2_fill,
         unselectedIcon = R.drawable.ic_qrcode_2_line,
-        badgeCount = 0,
-        hasBadge = false,
         navigationType = NavigationType.ACTION_BUTTON
-    ),
+    )
 
-    NavigationRoute(
+
+    data object Coupons : NavigationScreen(
         title = "Coupons",
         route = "coupons",
         selectedIcon = R.drawable.ic_coupon_fill,
         unselectedIcon = R.drawable.ic_coupon_line,
-        badgeCount = 0,
-        hasBadge = false
-    ),
+    )
 
-    NavigationRoute(
+    data object Settings : NavigationScreen(
         title = "Settings",
         route = "settings",
         selectedIcon = R.drawable.ic_settings_3_fill,
         unselectedIcon = R.drawable.ic_settings_3_line,
-        badgeCount = 0,
-        hasBadge = false
     )
+
+    data object Search : NavigationScreen(
+        title = null,
+        route = "Search"
+    )
+}
+
+val NavigationRouteItems = listOf(
+    NavigationScreen.Home,
+    NavigationScreen.Shops,
+    NavigationScreen.Scan,
+    NavigationScreen.Coupons,
+    NavigationScreen.Settings
 )
