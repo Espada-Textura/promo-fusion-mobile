@@ -11,13 +11,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
+import androidx.navigation.NavController
 import com.promofusion.R
 import com.promofusion.common.components.HeaderTitle
 import com.promofusion.common.theme.PromoFusionTheme
 
 @Composable
-fun HomeScreen(navHostController: NavHostController? = null) {
+fun HomeScreen(navController: NavController? = null) {
 
     Column(modifier = Modifier.fillMaxWidth()) {
         HeaderTitle(title = "Welcome back!", description = "Let's get your promotions", action = {
@@ -33,8 +33,7 @@ fun HomeScreen(navHostController: NavHostController? = null) {
             modifier = Modifier
                 .padding(24.dp, 0.dp)
                 .fillMaxWidth()
-        ) {
-        }
+        ) {}
     }
 }
 

@@ -13,12 +13,12 @@
         android:theme="@style/Theme.PromoFusion"
         tools:targetApi="31">
         <activity
-            android:name="com.promofusion.modules.auth.activity.views.AuthActivity"
+            android:name="com.promofusion.modules.auth.context.views.AuthActivity"
             android:exported="false"
             android:label="@string/title_activity_auth"
             android:theme="@style/Theme.PromoFusion" />
         <activity
-            android:name="com.promofusion.modules.main.activity.views.MainActivity"
+            android:name="com.promofusion.modules.main.context.views.MainActivity"
             android:exported="true"
             android:label="@string/title_activity_main"
             android:theme="@style/Theme.SplashScreen.Starting">

@@ -1,4 +1,4 @@
-package com.promofusion.modules.main.activity.views
+package com.promofusion.modules.main.context.views
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
