@@ -3,7 +3,6 @@ package com.promofusion.common.theme
 import androidx.compose.ui.graphics.Color
 
 
-// Primary
 val RadicalRed50 = Color(0xFFfff0f0)
 val RadicalRed100 = Color(0xFFffe3e3)
 val RadicalRed200 = Color(0xFFffcbce)
@@ -17,7 +16,6 @@ val RadicalRed900 = Color(0xFF8e0d2e)
 val RadicalRed950 = Color(0xFF500113)
 
 
-// Secondary
 val PersianGreen50 = Color(0xFFf1fcfa)
 val PersianGreen100 = Color(0xFFd1f6f1)
 val PersianGreen200 = Color(0xFFa3ece3)
@@ -31,7 +29,6 @@ val PersianGreen900 = Color(0xFF194848)
 val PersianGreen950 = Color(0xFF09282a)
 
 
-// Tertiary
 val Violet50 = Color(0xFFf7f3ff)
 val Violet100 = Color(0xFFefe9fe)
 val Violet200 = Color(0xFFe2d6fe)
@@ -97,15 +94,15 @@ val Pumpkin800 = Color(0xFF9a4a12)
 val Pumpkin900 = Color(0xFF7c3d12)
 val Pumpkin950 = Color(0xFF432007)
 
-// Neutral
-val Neutral50 = Color(0xFFFAFAFA)
-val Neutral100 = Color(0xFFF5F5F5)
-val Neutral200 = Color(0xFFe5e5e5)
-val Neutral300 = Color(0xFFd4d4d4)
-val Neutral400 = Color(0xFFa3a3a3)
-val Neutral500 = Color(0xFF737373)
-val Neutral600 = Color(0xFF525252)
-val Neutral700 = Color(0xFF404040)
-val Neutral800 = Color(0xFF262626)
-val Neutral900 = Color(0xFF171717)
-val Neutral950 = Color(0xFF0a0a0a)
+// Stone
+val Stone50 = Color(0xFFf4f3f2)
+val Stone100 = Color(0xFFe2e1df)
+val Stone200 = Color(0xFFc7c4c1)
+val Stone300 = Color(0xFFa7a29d)
+val Stone400 = Color(0xFF8e8781)
+val Stone500 = Color(0xFF78716c)
+val Stone600 = Color(0xFF6d6561)
+val Stone700 = Color(0xFF585250)
+val Stone800 = Color(0xFF4d4846)
+val Stone900 = Color(0xFF443f3f)
+val Stone950 = Color(0xFF262322)
