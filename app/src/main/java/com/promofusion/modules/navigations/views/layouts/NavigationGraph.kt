@@ -10,6 +10,7 @@ import com.promofusion.modules.auth.navigations.views.layouts.authNavigationGrap
 import com.promofusion.modules.main.navigations.models.MainNavigation
 import com.promofusion.modules.main.navigations.views.components.BottomNavigationBar
 import com.promofusion.modules.main.navigations.views.layouts.mainNavigationGraph
+import com.promofusion.modules.search.navigations.views.layouts.searchNavigationGraph
 
 
 @Composable
@@ -28,6 +29,7 @@ fun NavigationGraph() {
         ) {
             mainNavigationGraph(navController)
             authNavigationGraph()
+            searchNavigationGraph(navController)
         }
     }
 }

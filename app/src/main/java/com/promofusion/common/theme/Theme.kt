@@ -12,16 +12,16 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
 private val darkModeScheme = darkColorScheme(
-    background = Neutral900,
-    onBackground = Neutral50,
+    background = Stone950,
+    onBackground = Stone50,
 
-    surface = Neutral900,
-    onSurface = Neutral50,
-    surfaceVariant = Neutral800,
-    onSurfaceVariant = Neutral50,
-    inverseSurface = Neutral100,
-    inverseOnSurface = Neutral950,
-    surfaceTint = Neutral50,
+    surface = Stone900,
+    onSurface = Stone50,
+    surfaceVariant = Stone800,
+    onSurfaceVariant = Stone50,
+    inverseSurface = Stone100,
+    inverseOnSurface = Stone950,
+    surfaceTint = Stone50,
 
     primary = RadicalRed600,
     onPrimary = RadicalRed50,
@@ -29,10 +29,10 @@ private val darkModeScheme = darkColorScheme(
     onPrimaryContainer = RadicalRed50,
     inversePrimary = RadicalRed400,
 
-    secondary = PersianGreen600,
-    onSecondary = PersianGreen50,
-    secondaryContainer = PersianGreen700,
-    onSecondaryContainer = PersianGreen50,
+    secondary = Stone800,
+    onSecondary = Stone50,
+    secondaryContainer = Stone700,
+    onSecondaryContainer = Stone50,
 
     tertiary = Violet600,
     onTertiary = Violet50,
@@ -44,24 +44,24 @@ private val darkModeScheme = darkColorScheme(
     errorContainer = Red800,
     onErrorContainer = Red500,
 
-    outline = Neutral800,
-    outlineVariant = Neutral700,
+    outline = Stone800,
+    outlineVariant = Stone700,
 
-    scrim = Neutral600
+    scrim = Stone600
 )
 
 private val lightModeScheme = lightColorScheme(
 
-    background = Neutral100,
-    onBackground = Neutral950,
+    background = Stone50,
+    onBackground = Stone950,
 
-    surface = Neutral50,
-    onSurface = Neutral950,
-    surfaceVariant = Neutral100,
-    onSurfaceVariant = Neutral950,
-    inverseSurface = Neutral900,
-    inverseOnSurface = Neutral50,
-    surfaceTint = Neutral50,
+    surface = Stone50,
+    onSurface = Stone950,
+    surfaceVariant = Stone100,
+    onSurfaceVariant = Stone950,
+    inverseSurface = Stone900,
+    inverseOnSurface = Stone50,
+    surfaceTint = Stone50,
 
     primary = RadicalRed500,
     onPrimary = RadicalRed50,
@@ -69,10 +69,10 @@ private val lightModeScheme = lightColorScheme(
     onPrimaryContainer = RadicalRed950,
     inversePrimary = RadicalRed600,
 
-    secondary = PersianGreen500,
-    onSecondary = PersianGreen50,
-    secondaryContainer = PersianGreen300,
-    onSecondaryContainer = PersianGreen950,
+    secondary = Stone50,
+    onSecondary = Stone950,
+    secondaryContainer = Stone50,
+    onSecondaryContainer = Stone950,
 
     tertiary = Violet500,
     onTertiary = Violet50,
@@ -84,10 +84,10 @@ private val lightModeScheme = lightColorScheme(
     errorContainer = Red800,
     onErrorContainer = Red500,
 
-    outline = Neutral200,
-    outlineVariant = Neutral300,
+    outline = Stone200,
+    outlineVariant = Stone300,
 
-    scrim = Neutral400
+    scrim = Stone400
 )
 
 @Composable

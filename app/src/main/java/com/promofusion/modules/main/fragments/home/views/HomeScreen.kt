@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
@@ -14,8 +15,11 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.promofusion.R
 import com.promofusion.common.components.HeaderTitle
+import com.promofusion.common.components.SearchBar
 import com.promofusion.common.theme.PromoFusionTheme
+import com.promofusion.modules.search.navigations.models.SearchNavigation
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(navController: NavController? = null) {
 
@@ -33,7 +37,11 @@ fun HomeScreen(navController: NavController? = null) {
             modifier = Modifier
                 .padding(24.dp, 0.dp)
                 .fillMaxWidth()
-        ) {}
+        ) {
+            SearchBar(
+                onActiveChange = { if (it) navController?.navigate(SearchNavigation.Default.route) }
+            ) {}
+        }
     }
 }
 
