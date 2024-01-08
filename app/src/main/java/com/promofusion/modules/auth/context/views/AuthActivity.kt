@@ -1,4 +1,4 @@
-package com.promofusion.modules.auth.activity.views
+package com.promofusion.modules.auth.context.views
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

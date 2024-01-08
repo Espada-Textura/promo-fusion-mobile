@@ -1,65 +1,66 @@
-package com.promofusion.modules.navigations.models
+package com.promofusion.modules.main.navigations.models
 
 import com.promofusion.R
+import com.promofusion.modules.navigations.models.INavigationScreen
 
 enum class NavigationType {
     NAVIGATION, ACTION_BUTTON
 }
 
-sealed class NavigationScreen(
-    val title: String?,
-    val route: String,
+sealed class MainNavigation(
+    val title: String? = null,
+    override val route: String,
     val unselectedIcon: Int? = null,
     val selectedIcon: Int? = null,
     val navigationType: NavigationType = NavigationType.NAVIGATION
-) {
-    data object Home : NavigationScreen(
+) : INavigationScreen {
+
+    data object Default : MainNavigation(
+        route = "/main"
+    )
+
+    data object Home : MainNavigation(
         title = "Home",
-        route = "home",
+        route = "/main/home",
         selectedIcon = R.drawable.ic_home_4_fill,
         unselectedIcon = R.drawable.ic_home_4_line,
     )
 
-    data object Shops : NavigationScreen(
+    data object Shops : MainNavigation(
         title = "Shops",
-        route = "shops",
+        route = "/main/shops",
         selectedIcon = R.drawable.ic_sale_fill,
         unselectedIcon = R.drawable.ic_sale_line,
     )
 
-    data object Scan : NavigationScreen(
+    data object Scan : MainNavigation(
         title = null,
-        route = "scan",
+        route = "/main/scan",
         selectedIcon = R.drawable.ic_qrcode_2_fill,
         unselectedIcon = R.drawable.ic_qrcode_2_line,
         navigationType = NavigationType.ACTION_BUTTON
     )
 
 
-    data object Coupons : NavigationScreen(
+    data object Coupons : MainNavigation(
         title = "Coupons",
-        route = "coupons",
+        route = "/main/coupons",
         selectedIcon = R.drawable.ic_coupon_fill,
         unselectedIcon = R.drawable.ic_coupon_line,
     )
 
-    data object Settings : NavigationScreen(
+    data object Settings : MainNavigation(
         title = "Settings",
-        route = "settings",
+        route = "/main/settings",
         selectedIcon = R.drawable.ic_settings_3_fill,
         unselectedIcon = R.drawable.ic_settings_3_line,
     )
-
-    data object Search : NavigationScreen(
-        title = null,
-        route = "Search"
-    )
 }
 
-val NavigationRouteItems = listOf(
-    NavigationScreen.Home,
-    NavigationScreen.Shops,
-    NavigationScreen.Scan,
-    NavigationScreen.Coupons,
-    NavigationScreen.Settings
+val NavigationRoutes = listOf(
+    MainNavigation.Home,
+    MainNavigation.Shops,
+    MainNavigation.Scan,
+    MainNavigation.Coupons,
+    MainNavigation.Settings
 )
