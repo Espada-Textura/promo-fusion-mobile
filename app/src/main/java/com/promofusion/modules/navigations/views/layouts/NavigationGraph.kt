@@ -12,6 +12,7 @@ import com.promofusion.modules.main.fragments.home.views.HomeScreen
 import com.promofusion.modules.main.fragments.scan.views.ScanScreen
 import com.promofusion.modules.main.fragments.settings.views.SettingsScreen
 import com.promofusion.modules.main.fragments.subscriptions.views.SubscriptionsScreen
+import com.promofusion.modules.navigations.models.NavigationScreen
 import com.promofusion.modules.navigations.views.components.BottomNavigationBar
 
 
@@ -23,29 +24,34 @@ fun NavigationGraph() {
     Scaffold(bottomBar = { BottomNavigationBar(navHostController = navHostController) }) { paddingValues ->
         NavHost(
             navController = navHostController,
-            startDestination = "home",
+            startDestination = NavigationScreen.Home.route,
             modifier = Modifier.padding(paddingValues)
         ) {
 
-            composable(route = "home") {
-                HomeScreen()
+            composable(route = NavigationScreen.Home.route) {
+                HomeScreen(navHostController)
             }
 
-            composable(route = "shops") {
+            composable(route = NavigationScreen.Shops.route) {
                 SubscriptionsScreen()
             }
 
-            composable(route = "scan") {
+            composable(route = NavigationScreen.Scan.route) {
                 ScanScreen()
             }
 
-            composable(route = "coupons") {
+            composable(route = NavigationScreen.Coupons.route) {
                 CouponsScreen()
             }
 
-            composable(route = "settings") {
+            composable(route = NavigationScreen.Settings.route) {
                 SettingsScreen()
             }
+
+            composable(route = NavigationScreen.Search.route) {
+                
+            }
+
         }
     }
 

@@ -62,13 +62,17 @@ fun BottomNavigationBar(
                                 navHostController.navigate(item.route)
                             },
                             icon = {
-                                Icon(
-                                    imageVector = ImageVector.vectorResource(
-                                        item.unselectedIcon
-                                    ),
-                                    contentDescription = item.title,
-                                    modifier = Modifier.padding(0.dp, 16.dp)
-                                )
+                                item.unselectedIcon?.let {
+                                    ImageVector.vectorResource(
+                                        it
+                                    )
+                                }?.let {
+                                    Icon(
+                                        imageVector = it,
+                                        contentDescription = item.title,
+                                        modifier = Modifier.padding(0.dp, 16.dp)
+                                    )
+                                }
                             },
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -93,8 +97,14 @@ fun BottomNavigationBar(
                                 navHostController.navigate(item.route)
                             },
                             icon = {
-                                Icon(imageVector = ImageVector.vectorResource(if (currentDestination?.hierarchy?.any { it.route == item.route } == true) item.selectedIcon
-                                else item.unselectedIcon), contentDescription = item.title)
+                                (if (currentDestination?.hierarchy?.any { it.route == item.route } == true) item.selectedIcon
+                                else item.unselectedIcon)?.let { ImageVector.vectorResource(it) }
+                                    ?.let {
+                                        Icon(
+                                            imageVector = it,
+                                            contentDescription = item.title
+                                        )
+                                    }
                             },
                             modifier = Modifier
                                 .fillMaxWidth()
