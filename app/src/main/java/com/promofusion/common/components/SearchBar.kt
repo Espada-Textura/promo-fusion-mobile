@@ -29,8 +29,7 @@ fun SearchBar(
     enabled: Boolean = true,
     placeholder: @Composable (() -> Unit)? = {
         Text(
-            text = "Search",
-            color = MaterialTheme.colorScheme.scrim
+            text = "Search", color = MaterialTheme.colorScheme.scrim
         )
     },
     leadingIcon: @Composable (() -> Unit)? = {
@@ -65,4 +64,6 @@ fun SearchBar(
         modifier = modifier,
         enabled = enabled
     )
+
+
 }
