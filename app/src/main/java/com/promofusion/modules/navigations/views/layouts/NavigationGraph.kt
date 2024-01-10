@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
+import com.promofusion.modules.auth.navigations.models.AuthNavigation
 import com.promofusion.modules.auth.navigations.views.layouts.authNavigationGraph
 import com.promofusion.modules.main.navigations.models.MainNavigation
 import com.promofusion.modules.main.navigations.views.components.BottomNavigationBar
@@ -24,11 +25,11 @@ fun NavigationGraph() {
     }) { paddingValues ->
         NavHost(
             navController = navController,
-            startDestination = MainNavigation.Default.route,
+            startDestination = AuthNavigation.Default.route,
             modifier = Modifier.padding(paddingValues),
         ) {
             mainNavigationGraph(navController)
-            authNavigationGraph()
+            authNavigationGraph(navController)
             searchNavigationGraph(navController)
         }
     }
