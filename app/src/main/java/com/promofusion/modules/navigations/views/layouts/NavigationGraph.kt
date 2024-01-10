@@ -5,48 +5,31 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.promofusion.modules.main.fragments.coupons.views.CouponsScreen
-import com.promofusion.modules.main.fragments.home.views.HomeScreen
-import com.promofusion.modules.main.fragments.scan.views.ScanScreen
-import com.promofusion.modules.main.fragments.settings.views.SettingsScreen
-import com.promofusion.modules.main.fragments.subscriptions.views.SubscriptionsScreen
-import com.promofusion.modules.navigations.views.components.BottomNavigationBar
+import com.promofusion.modules.auth.navigations.views.layouts.authNavigationGraph
+import com.promofusion.modules.main.navigations.models.MainNavigation
+import com.promofusion.modules.main.navigations.views.components.BottomNavigationBar
+import com.promofusion.modules.main.navigations.views.layouts.mainNavigationGraph
+import com.promofusion.modules.search.navigations.views.layouts.searchNavigationGraph
 
 
 @Composable
 fun NavigationGraph() {
 
-    val navHostController = rememberNavController()
+    val navController = rememberNavController()
 
-    Scaffold(bottomBar = { BottomNavigationBar(navHostController = navHostController) }) { paddingValues ->
+
+    Scaffold(bottomBar = {
+        BottomNavigationBar(navHostController = navController)
+    }) { paddingValues ->
         NavHost(
-            navController = navHostController,
-            startDestination = "home",
-            modifier = Modifier.padding(paddingValues)
+            navController = navController,
+            startDestination = MainNavigation.Default.route,
+            modifier = Modifier.padding(paddingValues),
         ) {
-
-            composable(route = "home") {
-                HomeScreen()
-            }
-
-            composable(route = "shops") {
-                SubscriptionsScreen()
-            }
-
-            composable(route = "scan") {
-                ScanScreen()
-            }
-
-            composable(route = "coupons") {
-                CouponsScreen()
-            }
-
-            composable(route = "settings") {
-                SettingsScreen()
-            }
+            mainNavigationGraph(navController)
+            authNavigationGraph()
+            searchNavigationGraph(navController)
         }
     }
-
 }

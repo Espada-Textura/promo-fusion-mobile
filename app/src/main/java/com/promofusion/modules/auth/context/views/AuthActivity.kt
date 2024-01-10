@@ -1,4 +1,4 @@
-package com.promofusion.modules.main.activity.views
+package com.promofusion.modules.auth.context.views
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -7,9 +7,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.promofusion.common.theme.PromoFusionTheme
-import com.promofusion.modules.navigations.views.layouts.NavigationGraph
+import com.promofusion.modules.auth.fragments.auth.views.LoginScreen
 
-class MainActivity : ComponentActivity() {
+class AuthActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         //Splash Screen
         installSplashScreen()
@@ -18,7 +18,7 @@ class MainActivity : ComponentActivity() {
         this.actionBar?.hide()
         setContent {
             PromoFusionTheme {
-                NavigationGraph()
+                LoginScreen()
             }
         }
     }
@@ -27,8 +27,8 @@ class MainActivity : ComponentActivity() {
 
 @Preview(showBackground = true)
 @Composable
-fun MainActivityPreview() {
+fun AuthActivityView() {
     PromoFusionTheme {
-        NavigationGraph()
+        LoginScreen()
     }
 }
