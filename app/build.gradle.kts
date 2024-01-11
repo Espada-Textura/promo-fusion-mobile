@@ -51,7 +51,6 @@ android {
 
 }
 
-
 dependencies {
 
     implementation("androidx.core:core-ktx:1.12.0")
@@ -85,5 +84,6 @@ dependencies {
 
     implementation("androidx.compose.ui:ui-text-google-fonts:1.5.4")
     implementation("androidx.core:core-splashscreen:1.1.0-alpha02")
+    implementation("io.coil-kt:coil-compose:2.5.0")
 
 }
