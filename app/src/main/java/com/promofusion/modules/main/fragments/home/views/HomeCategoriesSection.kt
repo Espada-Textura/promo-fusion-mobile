@@ -1,12 +1,14 @@
 package com.promofusion.modules.main.fragments.home.views
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -26,26 +28,46 @@ fun HomeCategoriesSection(homeViewModel: HomeViewModel) {
         modifier = Modifier.padding(24.dp, 0.dp)
     ) {
 
-        LazyVerticalGrid(
-            columns = GridCells.Adaptive(128.dp),
+        Column(
             verticalArrangement = Arrangement.spacedBy(space = 24.dp),
-            horizontalArrangement = Arrangement.spacedBy(space = 24.dp),
             modifier = Modifier
-                .fillMaxWidth()
                 .padding(bottom = 8.dp)
+                .fillMaxWidth()
+                .height(IntrinsicSize.Min),
         ) {
-            homeViewModel.getCategories().forEach { category ->
-                item {
+            homeViewModel.getCategories().forEachIndexed { index, categoriesData ->
+                if (index % 2 == 0) Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .weight(1f),
+                    horizontalArrangement = Arrangement.spacedBy(24.dp)
+                ) {
                     CategoryCard(
-                        title = category.title,
-                        description = category.description,
-                        colors = category.cardColors(),
-                        icon = category.icon
+                        title = categoriesData.title,
+                        description = categoriesData.description,
+                        colors = categoriesData.cardColors(),
+                        icon = categoriesData.icon,
+                        modifier = Modifier
+                            .weight(1f)
+                            .width(IntrinsicSize.Min)
+                            .fillMaxHeight()
                     )
 
-                    Spacer(modifier = Modifier.size(8.dp))
+                    CategoryCard(
+                        title = homeViewModel.getCategories()[index + 1].title,
+                        description = homeViewModel.getCategories()[index + 1].description,
+                        colors = homeViewModel.getCategories()[index + 1].cardColors(),
+                        icon = homeViewModel.getCategories()[index + 1].icon,
+                        modifier = Modifier
+                            .weight(1f)
+                            .width(IntrinsicSize.Min)
+                            .fillMaxHeight()
+
+                    )
                 }
             }
+
+
         }
     }
 }

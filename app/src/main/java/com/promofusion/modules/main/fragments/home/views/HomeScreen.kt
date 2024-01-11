@@ -1,10 +1,10 @@
 package com.promofusion.modules.main.fragments.home.views
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -29,9 +29,11 @@ fun HomeScreen(navController: NavController? = null) {
 
 
     Column(
-        modifier = Modifier
-            .fillMaxSize()
+        verticalArrangement = Arrangement.spacedBy(24.dp), modifier = Modifier.verticalScroll(
+            rememberScrollState()
+        )
     ) {
+
         HeaderTitle(
             title = "Welcome back!", description = "Let's get your promotions", action = {
                 IconButton(onClick = { }) {
@@ -40,22 +42,16 @@ fun HomeScreen(navController: NavController? = null) {
                         contentDescription = "Notification Bell",
                     )
                 }
-            }, modifier = Modifier.padding(24.dp)
+            }, modifier = Modifier.padding(24.dp, 24.dp, 24.dp, 0.dp)
         )
 
         SearchBar(enabled = true, modifier = Modifier.padding(24.dp, 0.dp), onActiveChange = {
             if (it) navController?.navigate(SearchNavigation.Default.route)
         }) {}
 
-        Spacer(modifier = Modifier.height(24.dp))
-
         HomeFeaturedSection()
 
-        Spacer(modifier = Modifier.height(24.dp))
-
         HomeCategoriesSection(homeViewModel)
-
-        Spacer(modifier = Modifier.height(24.dp))
 
         HomeExploreSection()
 
