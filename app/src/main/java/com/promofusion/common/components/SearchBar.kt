@@ -1,7 +1,9 @@
 package com.promofusion.common.components
 
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -11,10 +13,12 @@ import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import com.promofusion.R
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -46,24 +50,33 @@ fun SearchBar(
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     content: @Composable ColumnScope.() -> Unit,
 ) {
-    androidx.compose.material3.SearchBar(
-        query = query,
-        onQueryChange = onQueryChange,
-        onSearch = onSearch,
-        active = active,
-        onActiveChange = onActiveChange,
-        placeholder = placeholder,
-        leadingIcon = leadingIcon,
-        trailingIcon = trailingIcon,
-        shape = shape,
-        colors = colors,
-        tonalElevation = tonalElevation,
-        windowInsets = windowInsets,
-        interactionSource = interactionSource,
-        content = content,
-        modifier = modifier,
-        enabled = enabled
-    )
-
-
+    Row (
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween
+    ){
+        androidx.compose.material3.SearchBar(
+            query = query,
+            onQueryChange = onQueryChange,
+            onSearch = onSearch,
+            active = active,
+            onActiveChange = onActiveChange,
+            placeholder = placeholder,
+            leadingIcon = leadingIcon,
+            trailingIcon = trailingIcon,
+            shape = shape,
+            colors = colors,
+            tonalElevation = tonalElevation,
+            windowInsets = windowInsets,
+            interactionSource = interactionSource,
+            content = content,
+            modifier = modifier,
+            enabled = enabled
+        )
+        SearchFilterButton(
+            width = 50.dp,
+            height = 50.dp,
+            iconSize = 18.dp,
+            onClick = { /* Handle click */ }
+        )
+    }
 }
