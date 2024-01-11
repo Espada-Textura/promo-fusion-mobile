@@ -50,32 +50,22 @@ fun SearchBar(
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     content: @Composable ColumnScope.() -> Unit,
 ) {
-    Row (
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween
-    ){
-        androidx.compose.material3.SearchBar(
-            query = query,
-            onQueryChange = onQueryChange,
-            onSearch = onSearch,
-            active = active,
-            onActiveChange = onActiveChange,
-            placeholder = placeholder,
-            leadingIcon = leadingIcon,
-            trailingIcon = trailingIcon,
-            shape = shape,
-            colors = colors,
-            tonalElevation = tonalElevation,
-            windowInsets = windowInsets,
-            interactionSource = interactionSource,
-            content = content,
-            modifier = modifier,
-            enabled = enabled
-        )
-        SearchFilterButton(
-            width = 50.dp,
-            height = 50.dp,
-            onClick = { /* Handle click */ }
-        )
-    }
+    androidx.compose.material3.SearchBar(
+        query = query,
+        onQueryChange = onQueryChange,
+        onSearch = onSearch,
+        active = active,
+        onActiveChange = onActiveChange,
+        placeholder = placeholder,
+        leadingIcon = leadingIcon,
+        trailingIcon = trailingIcon,
+        shape = shape,
+        colors = colors,
+        tonalElevation = tonalElevation,
+        windowInsets = windowInsets,
+        interactionSource = interactionSource,
+        content = content,
+        modifier = modifier,
+        enabled = enabled
+    )
 }
