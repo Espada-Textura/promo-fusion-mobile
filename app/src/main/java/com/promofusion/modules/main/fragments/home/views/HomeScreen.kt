@@ -2,6 +2,8 @@ package com.promofusion.modules.main.fragments.home.views
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -54,6 +56,8 @@ fun HomeScreen(navController: NavController? = null) {
         HomeCategoriesSection(homeViewModel)
 
         HomeExploreSection()
+
+        Spacer(modifier = Modifier.height(24.dp))
 
     }
 }
