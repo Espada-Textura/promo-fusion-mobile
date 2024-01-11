@@ -61,7 +61,8 @@ fun BottomNavigationBar(
                                     shape = RoundedCornerShape(64.dp)
                                 ),
                         ) {
-                            NavigationBarItem(selected = currentDestination.hierarchy.any { it.route == item.route } == true,
+                            NavigationBarItem(
+                                selected = currentDestination.hierarchy.any { it.route == item.route },
                                 onClick = {
                                     navHostController.navigate(item.route)
                                 },
@@ -96,12 +97,13 @@ fun BottomNavigationBar(
                         BottomNavigationItemContainer(
                             modifier = Modifier.weight(1f)
                         ) {
-                            NavigationBarItem(selected = currentDestination.hierarchy.any { it.route == item.route } == true,
+                            NavigationBarItem(
+                                selected = currentDestination.hierarchy.any { it.route == item.route },
                                 onClick = {
                                     navHostController.navigate(item.route)
                                 },
                                 icon = {
-                                    (if (currentDestination.hierarchy.any { it.route == item.route } == true) item.selectedIcon
+                                    (if (currentDestination.hierarchy.any { it.route == item.route }) item.selectedIcon
                                     else item.unselectedIcon)?.let { ImageVector.vectorResource(it) }
                                         ?.let {
                                             Icon(
