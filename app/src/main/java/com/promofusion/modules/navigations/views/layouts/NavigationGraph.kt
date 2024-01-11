@@ -19,7 +19,6 @@ fun NavigationGraph() {
 
     val navController = rememberNavController()
 
-
     Scaffold(bottomBar = {
         BottomNavigationBar(navHostController = navController)
     }) { paddingValues ->
