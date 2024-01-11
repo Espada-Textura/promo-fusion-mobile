@@ -13,9 +13,9 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun SearchFilterButton(
-    width: Dp = 60.dp, // Default width
-    height: Dp = 60.dp, // Default height
-    iconSize: Dp = 30.dp, // Default icon size
+    width: Dp = 50.dp, // Default width
+    height: Dp = 50.dp, // Default height
+    iconSize: Dp = 24.dp, // Default icon size
     onClick: () -> Unit // Click handler
 ) {
     Button(

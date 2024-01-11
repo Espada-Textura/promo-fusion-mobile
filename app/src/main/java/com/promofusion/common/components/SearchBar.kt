@@ -75,7 +75,6 @@ fun SearchBar(
         SearchFilterButton(
             width = 50.dp,
             height = 50.dp,
-            iconSize = 18.dp,
             onClick = { /* Handle click */ }
         )
     }
