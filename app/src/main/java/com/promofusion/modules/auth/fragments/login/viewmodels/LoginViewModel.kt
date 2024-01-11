@@ -8,8 +8,11 @@ class LoginViewModel : ViewModel() {
     private var _loginStatus = mutableStateOf("Not --- logged in")
     val loginStatus: MutableState<String> = _loginStatus
 
-    fun hit() {
-        this._loginStatus.value = "Login success"
+    fun handleOnSubmit( email: String, password: String) {
+
+
+        _loginStatus.value = "Logged in"
     }
+
 }
 
