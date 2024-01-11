@@ -1,6 +1,7 @@
 package com.promofusion.common.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
@@ -26,6 +27,8 @@ import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.promofusion.common.theme.PromoFusionTheme
+import com.promofusion.common.theme.Stone50
+import com.promofusion.common.theme.Stone950
 
 @Composable
 fun FeaturedShopCard(
@@ -57,7 +60,7 @@ fun FeaturedShopCard(
                         .background(
                             color = Color.Unspecified, shape = RoundedCornerShape(16.dp)
                         )
-                        .height(128.dp),
+                        .height(196.dp),
                     contentScale = ContentScale.Crop
                 )
 
@@ -67,21 +70,27 @@ fun FeaturedShopCard(
                             brush = Brush.verticalGradient(
                                 listOf(
                                     Color.Transparent,
-                                    MaterialTheme.colorScheme.secondaryContainer
+                                    Stone950
                                 )
                             )
                         )
                         .padding(16.dp)
+                        .height(96.dp),
+                    verticalArrangement = Arrangement.Bottom
                 ) {
                     Text(
-                        text = shopTitle, style = MaterialTheme.typography.titleMedium, maxLines = 1
+                        text = shopTitle,
+                        style = MaterialTheme.typography.titleMedium,
+                        maxLines = 1,
+                        color = Stone50
                     )
-                    Spacer(modifier = modifier.height(8.dp))
+                    Spacer(modifier = modifier.height(4.dp))
                     Text(
                         text = shopDescription,
                         style = MaterialTheme.typography.bodyMedium,
                         maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
+                        overflow = TextOverflow.Ellipsis,
+                        color = Stone50
                     )
                 }
             }

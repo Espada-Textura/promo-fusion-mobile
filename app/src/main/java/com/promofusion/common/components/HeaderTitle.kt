@@ -26,8 +26,7 @@ fun HeaderTitle(
 
     Row(
         modifier = modifier
-            .fillMaxWidth()
-            .padding(24.dp),
+            .fillMaxWidth(),
         horizontalArrangement = horizontalArrangement,
         verticalAlignment = verticalAlignment
     ) {
