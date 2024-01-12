@@ -3,6 +3,7 @@ package com.promofusion.modules.main.fragments.home.views
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
@@ -14,9 +15,11 @@ import androidx.compose.ui.unit.dp
 import com.promofusion.common.components.ContentSection
 import com.promofusion.common.components.ShopCard
 import com.promofusion.common.theme.PromoFusionTheme
+import com.promofusion.common.utils.DateTime
+import com.promofusion.modules.main.fragments.home.models.data.ShopData
 
 @Composable
-fun HomeExploreSection() {
+fun HomeExploreSection(featuredShops: List<ShopData> = emptyList()) {
     ContentSection(
         title = {
             Text(text = "Explore More", style = MaterialTheme.typography.titleMedium)
@@ -26,15 +29,16 @@ fun HomeExploreSection() {
 
         Column(
             verticalArrangement = Arrangement.spacedBy(24.dp),
-            modifier = Modifier.height(IntrinsicSize.Min)
+            modifier = Modifier.fillMaxHeight()
         ) {
-            (1..10).forEachIndexed { index, _ ->
+            featuredShops.forEachIndexed { index, shop ->
                 ShopCard(
                     model = "https://source.unsplash.com/random/150x15$index",
-                    title = "Flower Shop Promotion",
-                    description = "You can get your free flower extra.",
-                    promotion = "Buy 1 Get 1",
-                    duration = "1 day ago",
+                    title = shop.name ?: "No data",
+                    description = shop.description ?: "No data",
+                    promotion = shop.type ?: "No data",
+                    duration = shop.endDate?.let { (DateTime.getFormattedDate(it)) }
+                        ?: "No data",
                     modifier = Modifier.height(IntrinsicSize.Min)
                 )
             }

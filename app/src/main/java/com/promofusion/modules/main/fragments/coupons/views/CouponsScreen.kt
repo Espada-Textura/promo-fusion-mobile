@@ -1,12 +1,10 @@
 package com.promofusion.modules.main.fragments.coupons.views
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
@@ -20,6 +18,7 @@ import com.promofusion.common.components.HeaderTitle
 import com.promofusion.common.components.SearchWithFilter
 import com.promofusion.common.theme.PromoFusionTheme
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CouponsScreen(navController: NavController? = null) {
     Column(
@@ -28,25 +27,26 @@ fun CouponsScreen(navController: NavController? = null) {
             .fillMaxWidth()
             .fillMaxHeight()
     ) {
-        HeaderTitle(
-            modifier = Modifier
-                .padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 0.dp),
+        HeaderTitle(modifier = Modifier.padding(
+            start = 16.dp,
+            end = 16.dp,
+            top = 16.dp,
+            bottom = 0.dp
+        ),
             title = "Promotions",
             description = "Let's see what you've got",
             action = {
-            IconButton(onClick = { }) {
-                Icon(
-                    painter = (painterResource(id = R.drawable.ic_notification_line)),
-                    contentDescription = "Notification Bell",
-                )
-            }
-        })
-        SearchWithFilter (
-            modifier = Modifier.padding(start = 24.dp, end = 24.dp, top = 24.dp, bottom = 16.dp),
-            width = 50.dp,
-            height = 50.dp,
-            onClick = { }
-        )
+                IconButton(onClick = { }) {
+                    Icon(
+                        painter = (painterResource(id = R.drawable.ic_notification_line)),
+                        contentDescription = "Notification Bell",
+                    )
+                }
+            })
+
+        SearchWithFilter(
+            modifier = Modifier.padding(16.dp)
+        ) {}
         CouponListSection()
     }
 }

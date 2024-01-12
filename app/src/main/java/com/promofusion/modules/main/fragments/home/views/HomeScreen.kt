@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.promofusion.R
 import com.promofusion.common.components.HeaderTitle
-import com.promofusion.common.components.SearchBar
+import com.promofusion.common.components.SearchWithFilter
 import com.promofusion.common.theme.PromoFusionTheme
 import com.promofusion.modules.main.fragments.home.models.data.ShopData
 import com.promofusion.modules.search.navigations.models.SearchNavigation
@@ -27,9 +27,6 @@ import com.promofusion.modules.search.navigations.models.SearchNavigation
 @Composable
 fun HomeScreen(navController: NavController? = null, featuredShops: List<ShopData> = emptyList()) {
 
-    val description = "What shall we get today?"
-//        homeViewModel.getUserData().invoke()?.email ?: "What shall we get today?"
-
     Column(
         verticalArrangement = Arrangement.spacedBy(24.dp), modifier = Modifier.verticalScroll(
             rememberScrollState()
@@ -37,7 +34,7 @@ fun HomeScreen(navController: NavController? = null, featuredShops: List<ShopDat
     ) {
 
         HeaderTitle(
-            title = "Welcome back!", description = description, action = {
+            title = "Welcome back!", description = "What shall we get today?", action = {
                 IconButton(onClick = { }) {
                     Icon(
                         painter = (painterResource(id = R.drawable.ic_notification_line)),
@@ -47,15 +44,18 @@ fun HomeScreen(navController: NavController? = null, featuredShops: List<ShopDat
             }, modifier = Modifier.padding(16.dp, 16.dp, 16.dp, 0.dp)
         )
 
-        SearchBar(enabled = true, modifier = Modifier.padding(24.dp, 0.dp), onActiveChange = {
-            if (it) navController?.navigate(SearchNavigation.Default.route)
-        }) {}
+        SearchWithFilter(
+            enabled = true,
+            modifier = Modifier.padding(24.dp, 0.dp),
+            onActiveChange = {
+                if (it) navController?.navigate(SearchNavigation.Default.route)
+            }) {}
 
         HomeFeaturedSection(featuredShops)
 
         HomeCategoriesSection()
 
-        HomeExploreSection()
+        HomeExploreSection(featuredShops)
 
         Spacer(modifier = Modifier.height(24.dp))
 
