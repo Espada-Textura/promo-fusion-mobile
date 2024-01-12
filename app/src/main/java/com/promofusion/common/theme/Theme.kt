@@ -48,7 +48,7 @@ private val darkModeScheme = darkColorScheme(
     outline = Stone800,
     outlineVariant = Stone700,
 
-    scrim = Stone600
+    scrim = Stone200
 )
 
 private val lightModeScheme = lightColorScheme(
@@ -108,16 +108,14 @@ fun PromoFusionTheme(
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            window.statusBarColor = Color.Transparent.toArgb()
-            window.navigationBarColor = Color.Transparent.toArgb()
+            window.statusBarColor = colorScheme.background.toArgb()
+            window.navigationBarColor = colorScheme.background.toArgb()
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !darkTheme
         }
     }
 
 
     MaterialTheme(
-        colorScheme = colorScheme,
-        typography = Typography,
-        content = content
+        colorScheme = colorScheme, typography = Typography, content = content
     )
 }

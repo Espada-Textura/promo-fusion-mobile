@@ -1,5 +1,8 @@
 package com.promofusion.common.constants
 
 object APIConstants {
-    val BASE_URL = "https://api.promosfusion.com/"
+    const val BASE_URL = "http://116.212.133.71"
+
+    //    "/merchants"
+    const val MERCHANTS_ENDPOINT = "/merchants"
 }
