@@ -13,7 +13,7 @@ fun NavGraphBuilder.searchNavigationGraph(navController: NavController) {
         startDestination = SearchNavigation.Search.route
     ) {
         composable(route = SearchNavigation.Search.route) {
-            SearchScreen()
+            SearchScreen(navController)
         }
     }
 }
