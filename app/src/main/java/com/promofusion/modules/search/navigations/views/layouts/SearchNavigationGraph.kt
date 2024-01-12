@@ -4,6 +4,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
+import com.promofusion.modules.main.fragments.search.views.SearchScreen
 import com.promofusion.modules.search.navigations.models.SearchNavigation
 
 fun NavGraphBuilder.searchNavigationGraph(navController: NavController) {
@@ -12,7 +13,7 @@ fun NavGraphBuilder.searchNavigationGraph(navController: NavController) {
         startDestination = SearchNavigation.Search.route
     ) {
         composable(route = SearchNavigation.Search.route) {
-
+            SearchScreen(navController)
         }
     }
 }
