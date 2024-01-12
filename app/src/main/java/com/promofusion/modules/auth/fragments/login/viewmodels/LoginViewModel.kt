@@ -86,7 +86,6 @@ class LoginViewModel : ViewModel() {
                         )
                         pending.value = false
                     } else {
-//                    error.showAlert(context, "Call failed: ${t.message}")
                         pending.value = false
                     }
                 }

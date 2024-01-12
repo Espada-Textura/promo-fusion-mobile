@@ -12,4 +12,5 @@ sealed class AuthNavigation(
     data object ForgotPassword : AuthNavigation(route = "/auth/forgot-password")
     data object ResetPassword : AuthNavigation(route = "/auth/reset-password")
     data object VerifyOtp : AuthNavigation(route = "/auth/verify-otp")
+    data object Welcnew : AuthNavigation(route = "/auth/welcnew")
 }
