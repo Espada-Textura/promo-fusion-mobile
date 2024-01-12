@@ -1,47 +1,48 @@
-package com.promofusion.modules.auth.fragments.welcome.views
+package com.promofusion.modules.auth.fragments.register.views
 
 import android.util.Patterns
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
-import com.promofusion.R
-import com.promofusion.common.components.HeaderTitle
-import com.promofusion.common.theme.PromoFusionTheme
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.unit.dp
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.promofusion.modules.auth.fragments.login.viewmodels.LoginViewModel
-import com.promofusion.modules.auth.fragments.login.viewmodels.RegisterViewModel
+import com.promofusion.R
+import com.promofusion.common.components.HeaderTitle
+import com.promofusion.common.theme.PromoFusionTheme
+import com.promofusion.modules.auth.context.views.components.ComplianceText
+import com.promofusion.modules.auth.context.views.components.OAuthPortal
+import com.promofusion.modules.auth.context.views.components.OrSeparator
+import com.promofusion.modules.auth.fragments.register.viewmodels.RegisterViewModel
 import com.promofusion.modules.auth.navigations.models.AuthNavigation
 
 
 @Composable
 fun RegisterScreen(navController: NavController) {
-    val logoPainter: Painter = painterResource(id = R.drawable.ic_welcome_iamge)
     var email by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
     val viewModel = viewModel<RegisterViewModel>()
@@ -59,106 +60,133 @@ fun RegisterScreen(navController: NavController) {
         }
 
         // Validate password (you can add more conditions based on your requirements)
-        if (password.isEmpty() || password.length < 6) {
-            // Handle invalid password
-            // You can show an error message or perform any other action
-            return false
-        }
-
-        return true
+        // Handle invalid password
+        // You can show an error message or perform any other action
+        return !(password.isEmpty() || password.length < 6)
     }
 
 
-    LazyColumn(modifier = Modifier.fillMaxWidth()) {
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(0.dp, 56.dp)
+    ) {
 
         item {
-            HeaderTitle(title = "Register",
-                description = "Get started with PromoFusion",
-                action = {},modifier = Modifier.padding(24.dp, 12.dp)
-            )
-
-
-            Image(
-                painter = logoPainter, "logo",
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(0.dp, 34.dp)
+            HeaderTitle(
+                title = "Register",
+                description = "Let's get you started with PromoFusion",
+                action = {},
+                modifier = Modifier.padding(24.dp, 12.dp),
+                textAlign = TextAlign.Center
             )
         }
+
         item {
-            TextField(
+            OutlinedTextField(
                 value = email,
                 onValueChange = {
-                    email = it },
+                    email = it
+                },
                 label = { Text("Email") },
                 placeholder = { Text("Email") },
                 singleLine = true,
                 leadingIcon = {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_user),
-                        contentDescription = "Search Icon"
+                        contentDescription = "User Icon"
                     )
                 },
                 modifier = Modifier
-                    .padding(24.dp, 12.dp)
-                    .fillMaxWidth()
-                    .clip(shape = MaterialTheme.shapes.extraLarge)
-                    .border(2.dp, Color.Gray, MaterialTheme.shapes.extraLarge)
+                    .padding(24.dp, 6.dp)
+                    .fillMaxWidth(),
+                shape = MaterialTheme.shapes.extraLarge
             )
 
 
-            TextField(
+            OutlinedTextField(
                 value = password,
                 onValueChange = { password = it },
                 label = { Text("Password") },
                 singleLine = true,
                 leadingIcon = {
                     Icon(
-                        painter = painterResource(id = R.drawable.ic_keyhole_line),
-                        contentDescription = "Search Icon",
-                        tint = MaterialTheme.colorScheme.onSecondary
-                    )
-                },visualTransformation = PasswordVisualTransformation(),
+                        painter = painterResource(id = R.drawable.key_1_line),
+                        contentDescription = "Password Icon",
+
+                        )
+                }, visualTransformation = PasswordVisualTransformation(),
                 modifier = Modifier
-                    .padding(24.dp, 12.dp)
-                    .fillMaxWidth()
-                    .clip(shape = MaterialTheme.shapes.extraLarge)
-                    .border(2.dp, Color.Gray,  MaterialTheme.shapes.extraLarge)
+                    .padding(24.dp, 6.dp)
+                    .fillMaxWidth(),
+                shape = MaterialTheme.shapes.extraLarge
             )
 
         }
 
         item {
-            Button(modifier = Modifier
-                .padding(24.dp, 12.dp)
-                .fillMaxWidth()
-                .height(54.dp),
+            Button(
+                modifier = Modifier
+                    .padding(24.dp, 12.dp)
+                    .fillMaxWidth()
+                    .height(54.dp),
                 enabled = validateInputs() && !viewModel.pending.value,
                 onClick = {
                     viewModel.handleOnSubmit(email, password)
-                }
-            ) {
-                Text(text = if (viewModel.pending.value) "Register ..." else "Register" )
-            }
-        }
-        item {
-            Row(modifier = Modifier.fillMaxWidth()
-                .padding(24.dp, 6.dp),
-            ) {
-                Text(text = "Already has an account.")
-                Text(text = "Sign In Now",
-                    color = MaterialTheme.colorScheme.primary,
-                    modifier = Modifier.padding(start = 4.dp).clickable {
-                        navController.navigate(AuthNavigation.SignIn.route)
-                    },
-                    fontWeight = FontWeight.Bold,
+                }, colors = ButtonDefaults.buttonColors(
+                    disabledContentColor = MaterialTheme.colorScheme.onPrimary,
+                    disabledContainerColor = MaterialTheme.colorScheme.primary
                 )
+            ) {
+                Text(text = if (viewModel.pending.value) "Register ..." else "Register")
             }
         }
+
+        item {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(24.dp, 6.dp),
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(text = "Already has an account.", style = MaterialTheme.typography.bodyMedium)
+
+                TextButton(onClick = { navController.navigate(AuthNavigation.SignIn.route) }) {
+
+                    Text(
+                        text = "Sign In",
+                        color = MaterialTheme.colorScheme.primary,
+                        fontWeight = FontWeight.Bold,
+                    )
+                }
+            }
+        }
+
+        item {
+            OrSeparator(
+                modifier = Modifier
+                    .padding(16.dp)
+                    .fillMaxWidth()
+            )
+        }
+
+        item {
+            OAuthPortal(
+                modifier = Modifier
+                    .padding(16.dp)
+                    .fillMaxWidth()
+            )
+        }
+
+
+        item {
+            ComplianceText(modifier = Modifier.padding(top = 56.dp))
+        }
+
 
     }
 }
-
 
 
 @Preview(showBackground = true)

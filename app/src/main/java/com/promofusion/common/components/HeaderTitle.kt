@@ -50,7 +50,8 @@ fun HeaderTitle(
                 fontWeight = FontWeight.Medium,
                 color = MaterialTheme.colorScheme.scrim,
                 textAlign = textAlign,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                style = MaterialTheme.typography.titleSmall
             )
         }
 

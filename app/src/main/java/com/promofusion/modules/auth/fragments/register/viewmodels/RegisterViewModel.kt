@@ -1,15 +1,12 @@
-package com.promofusion.modules.auth.fragments.login.viewmodels
+package com.promofusion.modules.auth.fragments.register.viewmodels
 
 import android.annotation.SuppressLint
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
-import com.promofusion.common.utils.SessionManager
 import com.promofusion.modules.auth.context.models.api.ApiClient
 import com.promofusion.modules.auth.context.models.api.ApiErrorHandler
-import com.promofusion.modules.auth.context.models.data.LoginRequest
-import com.promofusion.modules.auth.context.models.data.LoginResponse
 import com.promofusion.modules.auth.context.models.data.RegisterRequest
 import com.promofusion.modules.auth.context.models.data.RegisterResponse
 import com.promofusion.modules.auth.navigations.models.AuthNavigation
@@ -33,31 +30,38 @@ class RegisterViewModel : ViewModel() {
         navController = nav
     }
 
-    fun handleOnRegisterSuccess(response: RegisterResponse?){
+    fun handleOnRegisterSuccess(response: RegisterResponse?) {
         navController?.navigate(AuthNavigation.Welcnew.route)
     }
 
     fun handleOnSubmit(email: String, password: String) {
         pending.value = true
         val error: ApiErrorHandler = ApiErrorHandler()
-        apiClient.getApiService().register(request = RegisterRequest(email, password)).enqueue(object :
-            Callback<RegisterResponse> {
+        apiClient.getApiService().register(request = RegisterRequest(email, password))
+            .enqueue(object :
+                Callback<RegisterResponse> {
 
-            override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
-                if (response.isSuccessful) {
-                    handleOnRegisterSuccess(response.body())
-                } else {
-                    error.showAlert(context, "Register failed: invalid email or email has been used")
+                override fun onResponse(
+                    call: Call<RegisterResponse>,
+                    response: Response<RegisterResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        handleOnRegisterSuccess(response.body())
+                    } else {
+                        error.showAlert(
+                            context,
+                            "Register failed: invalid email or email has been used"
+                        )
+                    }
+
+                    pending.value = false
                 }
 
-                pending.value = false
-            }
-
-            override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
-                error.showAlert(context, "Register failed: invalid credentials")
-                pending.value = false
-            }
-        })
+                override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
+                    error.showAlert(context, "Register failed: invalid credentials")
+                    pending.value = false
+                }
+            })
     }
 
 }
