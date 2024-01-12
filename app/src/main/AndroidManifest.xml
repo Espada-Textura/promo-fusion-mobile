@@ -20,7 +20,6 @@
         <activity
             android:name="com.promofusion.modules.main.context.views.MainActivity"
             android:exported="true"
-            android:label="@string/title_activity_main"
             android:theme="@style/Theme.SplashScreen.Starting">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

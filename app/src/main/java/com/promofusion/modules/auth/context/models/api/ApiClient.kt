@@ -13,7 +13,7 @@ class ApiClient {
         // Initialize ApiService if not initialized yet
         if (!::apiService.isInitialized) {
             val retrofit = Retrofit.Builder()
-                .baseUrl("http://192.168.1.2/")
+                .baseUrl("http://116.212.133.71/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 
