@@ -3,6 +3,7 @@ package com.promofusion.modules.main.fragments.home.views
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -15,19 +16,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.promofusion.R
 import com.promofusion.common.components.HeaderTitle
 import com.promofusion.common.components.SearchBar
 import com.promofusion.common.theme.PromoFusionTheme
-import com.promofusion.modules.main.fragments.home.viewmodels.HomeViewModel
 import com.promofusion.modules.search.navigations.models.SearchNavigation
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(navController: NavController? = null) {
-    val homeViewModel: HomeViewModel = viewModel<HomeViewModel>()
 
 
     Column(
@@ -35,16 +33,17 @@ fun HomeScreen(navController: NavController? = null) {
             rememberScrollState()
         )
     ) {
-
         HeaderTitle(
             title = "Welcome back!", description = "Let's get your promotions", action = {
-                IconButton(onClick = { }) {
+                IconButton(onClick = { }, modifier = Modifier.weight(0.1f)) {
                     Icon(
                         painter = (painterResource(id = R.drawable.ic_notification_line)),
                         contentDescription = "Notification Bell",
                     )
                 }
-            }, modifier = Modifier.padding(24.dp, 24.dp, 24.dp, 0.dp)
+            }, modifier = Modifier
+                .padding(start = 16.dp, top = 16.dp, end = 16.dp, bottom = 0.dp)
+                .fillMaxWidth()
         )
 
         SearchBar(enabled = true, modifier = Modifier.padding(24.dp, 0.dp), onActiveChange = {
@@ -53,12 +52,11 @@ fun HomeScreen(navController: NavController? = null) {
 
         HomeFeaturedSection()
 
-        HomeCategoriesSection(homeViewModel)
+        HomeCategoriesSection()
 
         HomeExploreSection()
 
         Spacer(modifier = Modifier.height(24.dp))
-
     }
 }
 
