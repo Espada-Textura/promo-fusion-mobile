@@ -12,6 +12,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -21,6 +22,7 @@ import com.promofusion.R
 import com.promofusion.common.components.HeaderTitle
 import com.promofusion.common.components.SearchBar
 import com.promofusion.common.theme.PromoFusionTheme
+import com.promofusion.common.utils.SessionManager
 import com.promofusion.modules.main.fragments.home.viewmodels.HomeViewModel
 import com.promofusion.modules.search.navigations.models.SearchNavigation
 
@@ -28,6 +30,10 @@ import com.promofusion.modules.search.navigations.models.SearchNavigation
 @Composable
 fun HomeScreen(navController: NavController? = null) {
     val homeViewModel: HomeViewModel = viewModel<HomeViewModel>()
+
+    val userData = SessionManager(LocalContext.current).fetchCurrentUser()
+
+    val email = userData?.email ?: "Welcome!"
 
 
     Column(
@@ -37,7 +43,7 @@ fun HomeScreen(navController: NavController? = null) {
     ) {
 
         HeaderTitle(
-            title = "Welcome back!", description = "Let's get your promotions", action = {
+            title = "Welcome back!", description = email, action = {
                 IconButton(onClick = { }) {
                     Icon(
                         painter = (painterResource(id = R.drawable.ic_notification_line)),
