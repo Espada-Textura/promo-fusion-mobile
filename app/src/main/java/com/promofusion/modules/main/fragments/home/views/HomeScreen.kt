@@ -31,8 +31,9 @@ import com.promofusion.modules.search.navigations.models.SearchNavigation
 fun HomeScreen(navController: NavController? = null) {
     val homeViewModel: HomeViewModel = viewModel<HomeViewModel>()
 
+    // Fetch user data from session manager
     val userData = SessionManager(LocalContext.current).fetchCurrentUser()
-
+    // Show user email if logged in, else show "Welcome!"
     val email = userData?.email ?: "Welcome!"
 
 
