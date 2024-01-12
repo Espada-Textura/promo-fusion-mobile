@@ -1,13 +1,11 @@
 package com.promofusion.modules.auth.fragments.login.viewmodels
 
 import android.annotation.SuppressLint
-import android.app.AlertDialog
-import android.content.DialogInterface
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.promofusion.common.utils.SessionManager
 import com.promofusion.modules.auth.context.models.api.ApiClient
 import com.promofusion.modules.auth.context.models.api.ApiErrorHandler
 import com.promofusion.modules.auth.context.models.data.LoginRequest
@@ -34,7 +32,10 @@ class LoginViewModel : ViewModel() {
     }
 
 
-    fun handleOnLoginSuccess() {
+    fun handleOnLoginSuccess(response: LoginResponse) {
+        SessionManager(context!!).saveAuthToken(response.data.accessToken)
+        SessionManager(context!!).saveCurrentUser(
+            SessionManager.UserData(response.data.id, response.data.email, response.data.email))
         navController?.navigate(MainNavigation.Home.route)
     }
 
@@ -46,8 +47,9 @@ class LoginViewModel : ViewModel() {
 
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                 if (response.isSuccessful) {
-                    println(response.body()?.data?.email)
-                    handleOnLoginSuccess()
+                    handleOnLoginSuccess(response.body()!!)
+//                    println(SessionManager(context!!).fetchAuthToken())
+//                    println(SessionManager(context!!).fetchCurrentUser())
                 } else {
                     error.showAlert(context, "Login failed: invalid credentials")
                 }
