@@ -30,18 +30,19 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.promofusion.modules.auth.fragments.login.viewmodels.LoginViewModel
 
 @Composable
-fun LoginScreen(navController: NavController? = null) {
+fun LoginScreen(navController: NavController) {
     val logoPainter: Painter = painterResource(id = R.drawable.ic_welcome_iamge)
     var email by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
     val viewModel = viewModel<LoginViewModel>()
     viewModel.setAppContext(LocalContext.current)
-    viewModel.setNavController(navController!!)
+    viewModel.setNavController(navController)
 
     fun validateInputs(): Boolean {
         val emailPattern = Patterns.EMAIL_ADDRESS
@@ -110,7 +111,7 @@ fun LoginScreen(navController: NavController? = null) {
                             painter = painterResource(id = R.drawable.ic_search_line),
                             contentDescription = "Search Icon"
                         )
-                    },
+                    },visualTransformation = PasswordVisualTransformation(),
                     modifier = Modifier
                         .padding(24.dp, 12.dp)
                         .fillMaxWidth()
@@ -165,7 +166,7 @@ fun LoginScreen(navController: NavController? = null) {
 @Composable
 fun LoginScreenPreview() {
     PromoFusionTheme {
-        LoginScreen()
+        LoginScreen(navController = NavController(LocalContext.current))
     }
 }
 
