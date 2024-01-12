@@ -35,7 +35,7 @@ fun NavGraphBuilder.mainNavigationGraph(navController: NavController) {
         }
 
         composable(route = MainNavigation.Settings.route) {
-            SettingsScreen()
+            SettingsScreen(navController = navController)
         }
     }
 }
