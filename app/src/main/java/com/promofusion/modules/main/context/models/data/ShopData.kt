@@ -1,4 +1,4 @@
-package com.promofusion.modules.main.fragments.home.models.data
+package com.promofusion.modules.main.context.models.data
 
 data class ShopData(
     val createdAt: String?,

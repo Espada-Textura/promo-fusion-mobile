@@ -1,4 +1,4 @@
-package com.promofusion.modules.main.fragments.home.viewmodels
+package com.promofusion.modules.main.fragments.subscriptions.viewmodels
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
@@ -11,14 +11,14 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-
 @HiltViewModel
-class HomeViewModel @Inject constructor(
+class SubscriptionsViewModel @Inject constructor(
     private val shopRepository: ShopRepository
 ) : ViewModel() {
 
     private val _featuredShops = MutableStateFlow<List<ShopData>>(emptyList())
     val featuredShops: StateFlow<List<ShopData>> get() = _featuredShops
+
 
     init {
         viewModelScope.launch {
@@ -32,5 +32,4 @@ class HomeViewModel @Inject constructor(
             }
         }
     }
-
 }

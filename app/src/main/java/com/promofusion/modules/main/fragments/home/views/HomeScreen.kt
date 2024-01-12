@@ -20,7 +20,7 @@ import com.promofusion.R
 import com.promofusion.common.components.HeaderTitle
 import com.promofusion.common.components.SearchWithFilter
 import com.promofusion.common.theme.PromoFusionTheme
-import com.promofusion.modules.main.fragments.home.models.data.ShopData
+import com.promofusion.modules.main.context.models.data.ShopData
 import com.promofusion.modules.search.navigations.models.SearchNavigation
 
 @OptIn(ExperimentalMaterial3Api::class)
