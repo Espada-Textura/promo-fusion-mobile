@@ -12,6 +12,7 @@ import com.promofusion.modules.main.fragments.home.viewmodels.HomeViewModel
 import com.promofusion.modules.main.fragments.home.views.HomeScreen
 import com.promofusion.modules.main.fragments.scan.views.ScanScreen
 import com.promofusion.modules.main.fragments.settings.views.SettingsScreen
+import com.promofusion.modules.main.fragments.subscriptions.viewmodels.SubscriptionsViewModel
 import com.promofusion.modules.main.fragments.subscriptions.views.SubscriptionsScreen
 import com.promofusion.modules.main.navigations.models.MainNavigation
 
@@ -29,7 +30,10 @@ fun NavGraphBuilder.mainNavigationGraph(navController: NavController) {
         }
 
         composable(route = MainNavigation.Shops.route) {
-            SubscriptionsScreen()
+            val subscriptionsViewModel: SubscriptionsViewModel =
+                hiltViewModel<SubscriptionsViewModel>()
+            val shops by subscriptionsViewModel.featuredShops.collectAsState()
+            SubscriptionsScreen(shops)
         }
 
         composable(route = MainNavigation.Scan.route) {

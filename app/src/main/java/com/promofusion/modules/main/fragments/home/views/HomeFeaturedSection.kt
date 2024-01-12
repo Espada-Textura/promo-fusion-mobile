@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.promofusion.common.components.ContentSection
 import com.promofusion.common.components.FeaturedShopCard
-import com.promofusion.modules.main.fragments.home.models.data.ShopData
+import com.promofusion.modules.main.context.models.data.ShopData
 
 
 @Composable

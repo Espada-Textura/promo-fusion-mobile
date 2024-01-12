@@ -1,16 +1,16 @@
-package com.promofusion.modules.main.fragments.home.models.api
+package com.promofusion.modules.main.context.models.api
 
-import com.promofusion.modules.main.fragments.home.models.data.ShopListResponse
+import com.promofusion.modules.main.context.models.data.ShopListResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class HomeService @Inject constructor(private val homeApi: HomeApi) {
+class ShopService @Inject constructor(private val shopApi: ShopApi) {
 
     suspend fun getFeaturedShops(): ShopListResponse {
 
         return withContext(Dispatchers.IO) {
-            val shopListResponse = homeApi.getFeaturedShops()
+            val shopListResponse = shopApi.getFeaturedShops()
             (shopListResponse.body() as ShopListResponse)
         }
     }
