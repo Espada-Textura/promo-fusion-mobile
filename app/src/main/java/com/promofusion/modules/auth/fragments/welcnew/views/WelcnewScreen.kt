@@ -1,4 +1,4 @@
-package com.promofusion.modules.auth.fragments.welcome.views
+package com.promofusion.modules.auth.fragments.welcnew.views
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -14,8 +14,11 @@ import com.promofusion.common.components.HeaderTitle
 import com.promofusion.common.theme.PromoFusionTheme
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
@@ -23,21 +26,33 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.navigation.NavController
 import com.promofusion.modules.auth.navigations.models.AuthNavigation
 
+
+
+
 @Composable
-fun WelcomeScreen(navController: NavController) {
-    val logoPainter: Painter = painterResource(id = R.drawable.ic_welcome_iamge)
+fun WelcnewScreen(navController: NavController) {
     LazyColumn(modifier = Modifier.fillMaxWidth()) {
 
         item {
-            Image(
-                painter = logoPainter, "logo",
+//            Image(
+//                painter = logoPainter, "logo",
+//                modifier = Modifier
+//                    .fillMaxWidth()
+//                    .padding(12.dp, 56.dp).size(100.dp, 100.dp),
+//                tint = MaterialTheme.colorScheme.onSecondary
+//            )
+
+            Icon(
+                painter = painterResource(id = R.drawable.ic_check_circle_linex),
+                contentDescription = "Search Icon",
+                tint = Color(0xFF15803c),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(0.dp, 56.dp)
+                    .padding(12.dp, 66.dp).size(100.dp, 100.dp),
             )
 
-            HeaderTitle(title = "Welcome back!",
-                description = "Let’s get started to your gateway to a world of exciting promotions.",
+            HeaderTitle(title = "Done create account!",
+                description = "your account has been created successfully.",
                 action = {
                 },modifier = Modifier.padding(12.dp, 12.dp),
                 textAlign = TextAlign.Center
@@ -45,16 +60,6 @@ fun WelcomeScreen(navController: NavController) {
         }
 
         item {
-            Button(modifier = Modifier
-                .padding(24.dp, 12.dp)
-                .fillMaxWidth()
-                .height(54.dp),
-                onClick = {
-                    navController.navigate(AuthNavigation.SignUp.route)
-                }
-            ) {
-                Text(text = "Register an account" )
-            }
             Button(modifier = Modifier
                 .padding(24.dp, 12.dp)
                 .fillMaxWidth()
@@ -93,9 +98,9 @@ fun WelcomeScreen(navController: NavController) {
 
 @Preview(showBackground = true)
 @Composable
-fun WelcomeScreenPreview() {
+fun WelcnewScreenPreview() {
     PromoFusionTheme {
-        WelcomeScreen(navController = NavController(LocalContext.current))
+        WelcnewScreen(navController = NavController(LocalContext.current))
     }
 }
 

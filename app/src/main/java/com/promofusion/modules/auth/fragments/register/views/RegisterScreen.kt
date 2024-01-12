@@ -1,4 +1,4 @@
-package com.promofusion.modules.auth.fragments.login.views
+package com.promofusion.modules.auth.fragments.welcome.views
 
 import android.util.Patterns
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -35,14 +35,16 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.promofusion.modules.auth.fragments.login.viewmodels.LoginViewModel
+import com.promofusion.modules.auth.fragments.login.viewmodels.RegisterViewModel
 import com.promofusion.modules.auth.navigations.models.AuthNavigation
 
+
 @Composable
-fun LoginScreen(navController: NavController) {
+fun RegisterScreen(navController: NavController) {
     val logoPainter: Painter = painterResource(id = R.drawable.ic_welcome_iamge)
     var email by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
-    val viewModel = viewModel<LoginViewModel>()
+    val viewModel = viewModel<RegisterViewModel>()
     viewModel.setAppContext(LocalContext.current)
     viewModel.setNavController(navController)
 
@@ -66,13 +68,15 @@ fun LoginScreen(navController: NavController) {
         return true
     }
 
+
     LazyColumn(modifier = Modifier.fillMaxWidth()) {
 
         item {
-            HeaderTitle(title = "Login",
-                description = "Welcome Back",
+            HeaderTitle(title = "Register",
+                description = "Get started with PromoFusion",
                 action = {},modifier = Modifier.padding(24.dp, 12.dp)
-                )
+            )
+
 
             Image(
                 painter = logoPainter, "logo",
@@ -102,26 +106,26 @@ fun LoginScreen(navController: NavController) {
                     .border(2.dp, Color.Gray, MaterialTheme.shapes.extraLarge)
             )
 
-            (
-                TextField(
-                    value = password,
-                    onValueChange = { password = it },
-                    label = { Text("Password") },
-                    singleLine = true,
-                    leadingIcon = {
-                        Icon(
-                            painter = painterResource(id = R.drawable.ic_keyhole_line),
-                            contentDescription = "Search Icon",
-                            tint = MaterialTheme.colorScheme.onSecondary
-                        )
-                    },visualTransformation = PasswordVisualTransformation(),
-                    modifier = Modifier
-                        .padding(24.dp, 12.dp)
-                        .fillMaxWidth()
-                        .clip(shape = MaterialTheme.shapes.extraLarge)
-                        .border(2.dp, Color.Gray,  MaterialTheme.shapes.extraLarge)
+
+            TextField(
+                value = password,
+                onValueChange = { password = it },
+                label = { Text("Password") },
+                singleLine = true,
+                leadingIcon = {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_keyhole_line),
+                        contentDescription = "Search Icon",
+                        tint = MaterialTheme.colorScheme.onSecondary
                     )
+                },visualTransformation = PasswordVisualTransformation(),
+                modifier = Modifier
+                    .padding(24.dp, 12.dp)
+                    .fillMaxWidth()
+                    .clip(shape = MaterialTheme.shapes.extraLarge)
+                    .border(2.dp, Color.Gray,  MaterialTheme.shapes.extraLarge)
             )
+
         }
 
         item {
@@ -134,18 +138,18 @@ fun LoginScreen(navController: NavController) {
                     viewModel.handleOnSubmit(email, password)
                 }
             ) {
-                Text(text = if (viewModel.pending.value) "Login ..." else "Login" )
+                Text(text = if (viewModel.pending.value) "Register ..." else "Register" )
             }
         }
         item {
             Row(modifier = Modifier.fillMaxWidth()
                 .padding(24.dp, 6.dp),
             ) {
-                Text(text = "Don’t have an account yet?")
-                Text(text = "Sign Up Now",
+                Text(text = "Already has an account.")
+                Text(text = "Sign In Now",
                     color = MaterialTheme.colorScheme.primary,
                     modifier = Modifier.padding(start = 4.dp).clickable {
-                        navController.navigate(AuthNavigation.SignUp.route)
+                        navController.navigate(AuthNavigation.SignIn.route)
                     },
                     fontWeight = FontWeight.Bold,
                 )
@@ -159,9 +163,9 @@ fun LoginScreen(navController: NavController) {
 
 @Preview(showBackground = true)
 @Composable
-fun LoginScreenPreview() {
+fun RegisterScreenPreview() {
     PromoFusionTheme {
-        LoginScreen(navController = NavController(LocalContext.current))
+        RegisterScreen(navController = NavController(LocalContext.current))
     }
 }
 
