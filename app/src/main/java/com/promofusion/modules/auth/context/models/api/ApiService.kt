@@ -1,8 +1,8 @@
 package com.promofusion.modules.auth.context.models.api
 
+import com.promofusion.modules.auth.context.models.data.BaseResponse
 import com.promofusion.modules.auth.context.models.data.LoginRequest
 import com.promofusion.modules.auth.context.models.data.LoginResponse
-import com.promofusion.modules.auth.context.models.data.Resp
 import com.promofusion.modules.auth.context.models.data.UsersResponse
 import retrofit2.Call
 import retrofit2.http.Body
@@ -18,7 +18,7 @@ interface ApiService {
     fun login(@Body request: LoginRequest): Call<LoginResponse>
 
     @GET("ping")
-    fun ping(): Call<Resp>
+    fun ping(): Call<BaseResponse>
 
     @GET("users")
     fun getUsers(@Header("Authorization") token: String): Call<UsersResponse>

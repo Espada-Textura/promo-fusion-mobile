@@ -55,4 +55,13 @@ class SessionManager (context: Context) {
         val userDataJson = prefs.getString(USER_DATA, null)
         return Gson().fromJson(userDataJson, UserData::class.java)
     }
+
+    /**
+     * Function to logout user
+     */
+    fun logout() {
+        val editor = prefs.edit()
+        editor.clear()
+        editor.apply()
+    }
 }

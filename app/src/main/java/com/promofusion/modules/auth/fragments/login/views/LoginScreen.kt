@@ -1,5 +1,6 @@
 package com.promofusion.modules.auth.fragments.login.views
 
+import android.content.res.Resources.Theme
 import android.util.Patterns
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -108,8 +109,9 @@ fun LoginScreen(navController: NavController) {
                     singleLine = true,
                     leadingIcon = {
                         Icon(
-                            painter = painterResource(id = R.drawable.ic_search_line),
-                            contentDescription = "Search Icon"
+                            painter = painterResource(id = R.drawable.ic_keyhole_line),
+                            contentDescription = "Search Icon",
+                            tint = MaterialTheme.colorScheme.onSecondary
                         )
                     },visualTransformation = PasswordVisualTransformation(),
                     modifier = Modifier
