@@ -5,19 +5,26 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.promofusion.modules.auth.fragments.login.views.LoginScreen
+import com.promofusion.modules.auth.fragments.welcome.views.WelcomeScreen
 import com.promofusion.modules.auth.navigations.models.AuthNavigation
 
 fun NavGraphBuilder.authNavigationGraph(navController: NavController) {
 
     navigation(
         route = AuthNavigation.Default.route,
-        startDestination = AuthNavigation.SignIn.route
+        startDestination = AuthNavigation.Welcome.route
     ) {
+        composable(route = AuthNavigation.Welcome.route) {
+            WelcomeScreen(navController = navController)
+        }
+
         composable(route = AuthNavigation.SignIn.route) {
             LoginScreen(navController = navController)
         }
 
-        composable(route = AuthNavigation.SignUp.route) {}
+        composable(route = AuthNavigation.SignUp.route) {
+            LoginScreen(navController = navController)
+        }
 
         composable(route = AuthNavigation.ForgotPassword.route) {}
 
