@@ -15,23 +15,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.promofusion.R
 import com.promofusion.common.components.HeaderTitle
 import com.promofusion.common.components.SearchBar
 import com.promofusion.common.theme.PromoFusionTheme
-import com.promofusion.modules.main.fragments.home.viewmodels.HomeViewModel
+import com.promofusion.modules.main.fragments.home.models.data.ShopData
 import com.promofusion.modules.search.navigations.models.SearchNavigation
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(navController: NavController? = null) {
-    val homeViewModel: HomeViewModel = hiltViewModel<HomeViewModel>()
+fun HomeScreen(navController: NavController? = null, featuredShops: List<ShopData> = emptyList()) {
 
-
-    val description =
-        homeViewModel.getUserData().invoke()?.email.let { it } ?: "What shall we get today?"
+    val description = "What shall we get today?"
+//        homeViewModel.getUserData().invoke()?.email ?: "What shall we get today?"
 
     Column(
         verticalArrangement = Arrangement.spacedBy(24.dp), modifier = Modifier.verticalScroll(
@@ -54,7 +51,7 @@ fun HomeScreen(navController: NavController? = null) {
             if (it) navController?.navigate(SearchNavigation.Default.route)
         }) {}
 
-        HomeFeaturedSection()
+        HomeFeaturedSection(featuredShops)
 
         HomeCategoriesSection()
 
