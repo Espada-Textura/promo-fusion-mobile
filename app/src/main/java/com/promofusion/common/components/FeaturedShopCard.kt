@@ -52,7 +52,12 @@ fun FeaturedShopCard(
         OutlinedCard(
             modifier = modifier.width(256.dp)
         ) {
-            Box(modifier = Modifier, contentAlignment = Alignment.BottomStart) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .width(IntrinsicSize.Max),
+                contentAlignment = Alignment.BottomStart
+            ) {
                 AsyncImage(
                     model = imageURL,
                     contentDescription = "Featured Shop Image",
@@ -75,7 +80,8 @@ fun FeaturedShopCard(
                             )
                         )
                         .padding(16.dp)
-                        .height(96.dp),
+                        .height(96.dp)
+                        .fillMaxWidth(),
                     verticalArrangement = Arrangement.Bottom
                 ) {
                     Text(

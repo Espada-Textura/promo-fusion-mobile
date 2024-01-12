@@ -8,13 +8,14 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
 import com.promofusion.common.components.ContentSection
 import com.promofusion.common.components.FeaturedShopCard
+import com.promofusion.modules.main.fragments.home.models.data.ShopData
+
 
 @Composable
-fun HomeFeaturedSection() {
+fun HomeFeaturedSection(featuredShops: List<ShopData>) {
     ContentSection(
         title = {
             Text(text = "Featured", style = MaterialTheme.typography.titleMedium)
@@ -22,16 +23,18 @@ fun HomeFeaturedSection() {
         modifier = Modifier.padding(24.dp, 0.dp)
     ) {
         LazyRow {
-            items(10, itemContent = { key ->
-                FeaturedShopCard(
-                    promotionType = "20%",
-                    shopTitle = LoremIpsum(4).values.first(),
-                    shopDescription = LoremIpsum(10).values.first(),
-                    imageURL = "https://source.unsplash.com/random/500x30$key"
-                )
+            featuredShops.forEachIndexed { index, shop ->
+                item {
+                    FeaturedShopCard(
+                        promotionType = shop.type ?: "No data",
+                        shopTitle = shop.name ?: "[Empty Shop Name]",
+                        shopDescription = shop.description ?: "[Empty Description]",
+                        imageURL = "https://source.unsplash.com/random/300x30$index"
+                    )
 
-                Spacer(modifier = Modifier.width(24.dp))
-            })
+                    Spacer(modifier = Modifier.width(24.dp))
+                }
+            }
         }
     }
 }
