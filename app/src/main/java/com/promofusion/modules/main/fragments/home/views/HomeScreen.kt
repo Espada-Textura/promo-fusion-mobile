@@ -12,30 +12,26 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.promofusion.R
 import com.promofusion.common.components.HeaderTitle
 import com.promofusion.common.components.SearchBar
 import com.promofusion.common.theme.PromoFusionTheme
-import com.promofusion.common.utils.SessionManager
 import com.promofusion.modules.main.fragments.home.viewmodels.HomeViewModel
 import com.promofusion.modules.search.navigations.models.SearchNavigation
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(navController: NavController? = null) {
-    val homeViewModel: HomeViewModel = viewModel<HomeViewModel>()
+    val homeViewModel: HomeViewModel = hiltViewModel<HomeViewModel>()
 
-    // Fetch user data from session manager
-    val userData = SessionManager(LocalContext.current).fetchCurrentUser()
-    // Show user email if logged in, else show "Welcome!"
-    val email = userData?.email ?: "Welcome!"
 
+    val description =
+        homeViewModel.getUserData().invoke()?.email.let { it } ?: "What shall we get today?"
 
     Column(
         verticalArrangement = Arrangement.spacedBy(24.dp), modifier = Modifier.verticalScroll(
@@ -44,14 +40,14 @@ fun HomeScreen(navController: NavController? = null) {
     ) {
 
         HeaderTitle(
-            title = "Welcome back!", description = email, action = {
+            title = "Welcome back!", description = description, action = {
                 IconButton(onClick = { }) {
                     Icon(
                         painter = (painterResource(id = R.drawable.ic_notification_line)),
                         contentDescription = "Notification Bell",
                     )
                 }
-            }, modifier = Modifier.padding(24.dp, 24.dp, 24.dp, 0.dp)
+            }, modifier = Modifier.padding(16.dp, 16.dp, 16.dp, 0.dp)
         )
 
         SearchBar(enabled = true, modifier = Modifier.padding(24.dp, 0.dp), onActiveChange = {
@@ -60,7 +56,7 @@ fun HomeScreen(navController: NavController? = null) {
 
         HomeFeaturedSection()
 
-        HomeCategoriesSection(homeViewModel)
+        HomeCategoriesSection()
 
         HomeExploreSection()
 

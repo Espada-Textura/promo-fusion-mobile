@@ -15,7 +15,7 @@ class ApiErrorHandler {
         val alertDialog: AlertDialog = builder.create()
 
         // Set the position of the dialog
-        alertDialog.getWindow()?.setGravity(Gravity.CENTER) // You can change the Gravity as needed
+        alertDialog.window?.setGravity(Gravity.CENTER) // You can change the Gravity as needed
         alertDialog.show()
     }
 }
