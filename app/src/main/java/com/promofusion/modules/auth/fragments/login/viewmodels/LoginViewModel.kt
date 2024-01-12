@@ -82,7 +82,7 @@ class LoginViewModel : ViewModel() {
                         println(response.body()!!.data[0].email)
                         error.showAlert(
                             context,
-                            "Call failed: ${response.body()!!.data}"
+                            "Data: ${response.body()!!.data}"
                         )
                         pending.value = false
                     } else {
