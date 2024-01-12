@@ -10,6 +10,7 @@ import com.promofusion.modules.auth.context.models.api.ApiClient
 import com.promofusion.modules.auth.context.models.api.ApiErrorHandler
 import com.promofusion.modules.auth.context.models.data.LoginRequest
 import com.promofusion.modules.auth.context.models.data.LoginResponse
+import com.promofusion.modules.auth.context.models.data.UsersResponse
 import com.promofusion.modules.main.navigations.models.MainNavigation
 import retrofit2.Call
 import retrofit2.Callback
@@ -58,6 +59,31 @@ class LoginViewModel : ViewModel() {
             }
 
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                error.showAlert(context, "Call failed: ${t.message}")
+                pending.value = false
+            }
+        })
+    }
+
+    fun handleOnRegister() {
+        pending.value = true
+        val error : ApiErrorHandler = ApiErrorHandler()
+
+        apiClient.getApiService().getUsers("Bearer ${SessionManager(context!!).fetchAuthToken()}").enqueue(object :
+            Callback<UsersResponse> {
+
+            override fun onResponse(call: Call<UsersResponse>, response: Response<UsersResponse>) {
+                if (response.isSuccessful) {
+                    println(response.body()!!.data[0].email)
+                    error.showAlert(context, "Call failed: ${response.body()!!.data.toString()}")
+                    pending.value = false
+                } else {
+//                    error.showAlert(context, "Call failed: ${t.message}")
+                    pending.value = false
+                }
+            }
+
+            override fun onFailure(call: Call<UsersResponse>, t: Throwable) {
                 error.showAlert(context, "Call failed: ${t.message}")
                 pending.value = false
             }

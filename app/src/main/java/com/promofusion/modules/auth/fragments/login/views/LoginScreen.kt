@@ -132,6 +132,16 @@ fun LoginScreen(navController: NavController? = null) {
             ) {
                 Text(text = if (viewModel.pending.value) "Login ..." else "Login" )
             }
+            Button(modifier = Modifier
+                .padding(24.dp, 12.dp)
+                .fillMaxWidth()
+                .height(54.dp),
+                onClick = {
+                    viewModel.handleOnRegister()
+                }
+            ) {
+                Text(text = if (viewModel.pending.value) "Users ..." else "User" )
+            }
         }
         item {
             Row(modifier = Modifier.fillMaxWidth()
