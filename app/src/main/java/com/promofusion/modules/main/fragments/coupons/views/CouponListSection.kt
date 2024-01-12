@@ -15,7 +15,7 @@ import com.promofusion.common.constants.CouponStatus
 @Composable
 fun CouponListSection () {
     LazyColumn (
-        modifier = Modifier.padding(24.dp)
+        modifier = Modifier.padding(24.dp, 0.dp)
     ){
         items(8, itemContent = {
             CouponElevationCard(
