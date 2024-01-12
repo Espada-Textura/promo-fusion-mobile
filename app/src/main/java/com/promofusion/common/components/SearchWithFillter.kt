@@ -2,6 +2,7 @@ package com.promofusion.common.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
@@ -22,7 +23,6 @@ fun SearchWithFilter(
     modifier: Modifier = Modifier,
     width: Dp = 50.dp, // Default width
     height: Dp = 50.dp, // Default height
-    iconSize: Dp = 24.dp, // Default icon size
     onClick: () -> Unit // Click handler
 ) {
     Row (
@@ -43,7 +43,7 @@ fun SearchWithFilter(
                 tint = Color.White,
                 imageVector = ImageVector.vectorResource(id = com.promofusion.R.drawable.ic_filter),
                 contentDescription = "Search Filter Icon",
-                modifier = Modifier.size(iconSize) // Set the icon size
+                modifier = Modifier.defaultMinSize(24.dp) // Set the icon size
             )
         }
     }
