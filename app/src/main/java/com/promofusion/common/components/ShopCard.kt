@@ -62,7 +62,7 @@ fun ShopCard(
         ) {
             Box(
                 modifier = Modifier
-                    .weight(1f),
+                    .weight(0.75f),
                 contentAlignment = Alignment.TopStart
             ) {
                 AsyncImage(
