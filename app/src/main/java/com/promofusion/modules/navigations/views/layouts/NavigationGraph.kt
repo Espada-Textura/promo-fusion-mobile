@@ -25,7 +25,8 @@ fun NavigationGraph() {
     val userData = SessionManager(LocalContext.current).fetchCurrentUser()
 
     // If user is logged in, set default screen to MainNavigation.Default.route
-    val defaultScreen: String = userData?.let { MainNavigation.Default.route } ?: AuthNavigation.Default.route
+    val defaultScreen: String =
+        userData?.let { MainNavigation.Default.route } ?: AuthNavigation.Default.route
 
     Scaffold(bottomBar = {
         BottomNavigationBar(navHostController = navController)

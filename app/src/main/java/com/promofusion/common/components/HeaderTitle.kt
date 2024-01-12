@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.promofusion.common.theme.PromoFusionTheme
@@ -20,6 +21,7 @@ fun HeaderTitle(
     modifier: Modifier = Modifier,
     horizontalArrangement: Arrangement.Horizontal = Arrangement.SpaceBetween,
     verticalAlignment: Alignment.Vertical = Alignment.CenterVertically,
+    textAlign: TextAlign = TextAlign.Start,
     title: String, description: String, action: (@Composable () -> Unit)?,
     showAction: Boolean? = true,
 ) {
@@ -30,17 +32,25 @@ fun HeaderTitle(
         horizontalArrangement = horizontalArrangement,
         verticalAlignment = verticalAlignment
     ) {
-        Column {
+        Column(
+            modifier
+                .fillMaxWidth()
+                .weight(0.5f)
+        ) {
             Text(
                 text = title,
                 fontWeight = FontWeight.ExtraBold,
                 style = MaterialTheme.typography.headlineLarge,
+                textAlign = textAlign,
+                modifier = Modifier.fillMaxWidth()
             )
 
             Text(
                 text = description,
                 fontWeight = FontWeight.Medium,
-                color = MaterialTheme.colorScheme.scrim
+                color = MaterialTheme.colorScheme.scrim,
+                textAlign = textAlign,
+                modifier = Modifier.fillMaxWidth()
             )
         }
 

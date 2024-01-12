@@ -36,13 +36,14 @@ class LoginViewModel : ViewModel() {
     fun handleOnLoginSuccess(response: LoginResponse) {
         SessionManager(context!!).saveAuthToken(response.data.accessToken)
         SessionManager(context!!).saveCurrentUser(
-            SessionManager.UserData(response.data.id, response.data.email, response.data.email))
+            SessionManager.UserData(response.data.id, response.data.email, response.data.email)
+        )
         navController?.navigate(MainNavigation.Home.route)
     }
 
-    fun handleOnSubmit( email: String, password: String) {
+    fun handleOnSubmit(email: String, password: String) {
         pending.value = true
-        val error : ApiErrorHandler = ApiErrorHandler()
+        val error: ApiErrorHandler = ApiErrorHandler()
         apiClient.getApiService().login(request = LoginRequest(email, password)).enqueue(object :
             Callback<LoginResponse> {
 
@@ -67,27 +68,34 @@ class LoginViewModel : ViewModel() {
 
     fun handleOnRegister() {
         pending.value = true
-        val error : ApiErrorHandler = ApiErrorHandler()
+        val error: ApiErrorHandler = ApiErrorHandler()
 
-        apiClient.getApiService().getUsers("Bearer ${SessionManager(context!!).fetchAuthToken()}").enqueue(object :
-            Callback<UsersResponse> {
+        apiClient.getApiService().getUsers("Bearer ${SessionManager(context!!).fetchAuthToken()}")
+            .enqueue(object :
+                Callback<UsersResponse> {
 
-            override fun onResponse(call: Call<UsersResponse>, response: Response<UsersResponse>) {
-                if (response.isSuccessful) {
-                    println(response.body()!!.data[0].email)
-                    error.showAlert(context, "Call failed: ${response.body()!!.data.toString()}")
-                    pending.value = false
-                } else {
+                override fun onResponse(
+                    call: Call<UsersResponse>,
+                    response: Response<UsersResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        println(response.body()!!.data[0].email)
+                        error.showAlert(
+                            context,
+                            "Call failed: ${response.body()!!.data}"
+                        )
+                        pending.value = false
+                    } else {
 //                    error.showAlert(context, "Call failed: ${t.message}")
+                        pending.value = false
+                    }
+                }
+
+                override fun onFailure(call: Call<UsersResponse>, t: Throwable) {
+                    error.showAlert(context, "Call failed: ${t.message}")
                     pending.value = false
                 }
-            }
-
-            override fun onFailure(call: Call<UsersResponse>, t: Throwable) {
-                error.showAlert(context, "Call failed: ${t.message}")
-                pending.value = false
-            }
-        })
+            })
     }
 
 }
