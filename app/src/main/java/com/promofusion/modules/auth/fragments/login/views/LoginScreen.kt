@@ -1,5 +1,6 @@
 package com.promofusion.modules.auth.fragments.login.views
 
+import android.util.Patterns
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -27,11 +28,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.promofusion.modules.auth.fragments.login.viewmodels.LoginViewModel
-import com.promofusion.modules.main.navigations.models.MainNavigation
 
 @Composable
 fun LoginScreen(navController: NavController? = null) {
@@ -39,11 +40,36 @@ fun LoginScreen(navController: NavController? = null) {
     var email by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
     val viewModel = viewModel<LoginViewModel>()
+    viewModel.setAppContext(LocalContext.current)
+    viewModel.setNavController(navController!!)
+
+    fun validateInputs(): Boolean {
+        val emailPattern = Patterns.EMAIL_ADDRESS
+
+        // Validate email
+        if (email.isEmpty() || !emailPattern.matcher(email).matches()) {
+            // Handle invalid email
+            // You can show an error message or perform any other action
+            return false
+        }
+
+        // Validate password (you can add more conditions based on your requirements)
+        if (password.isEmpty() || password.length < 6) {
+            // Handle invalid password
+            // You can show an error message or perform any other action
+            return false
+        }
+
+        return true
+    }
 
     LazyColumn(modifier = Modifier.fillMaxWidth()) {
 
         item {
-            HeaderTitle(title = "Login", description = "Welcome Back", action = {})
+            HeaderTitle(title = "Login",
+                description = "Welcome Back",
+                action = {},modifier = Modifier.padding(24.dp, 12.dp)
+                )
 
             Image(
                 painter = logoPainter, "logo",
@@ -89,7 +115,7 @@ fun LoginScreen(navController: NavController? = null) {
                         .padding(24.dp, 12.dp)
                         .fillMaxWidth()
                         .clip(shape = MaterialTheme.shapes.extraLarge)
-                        .border(2.dp, Color.Gray, MaterialTheme.shapes.extraLarge)
+                        .border(2.dp, Color.Gray,  MaterialTheme.shapes.extraLarge)
                     )
             )
         }
@@ -99,12 +125,12 @@ fun LoginScreen(navController: NavController? = null) {
                 .padding(24.dp, 12.dp)
                 .fillMaxWidth()
                 .height(54.dp),
+                enabled = validateInputs() && !viewModel.pending.value,
                 onClick = {
                     viewModel.handleOnSubmit(email, password)
-                    navController?.navigate(MainNavigation.Home.route)
                 }
             ) {
-                Text(text = "Login")
+                Text(text = if (viewModel.pending.value) "Login ..." else "Login" )
             }
         }
         item {
