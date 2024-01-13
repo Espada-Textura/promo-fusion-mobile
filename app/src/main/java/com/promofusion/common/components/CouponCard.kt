@@ -1,6 +1,5 @@
 package com.promofusion.common.components
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -20,25 +19,21 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.layout.ContentScale
 import coil.compose.AsyncImage
-
-import com.promofusion.common.constants.CouponStatus
 
 @Composable
 fun CouponElevationCard (
@@ -50,17 +45,16 @@ fun CouponElevationCard (
 ) {
     ElevatedCard (
         elevation = CardDefaults.cardElevation(
-            defaultElevation = 6.dp
+            defaultElevation = 4.dp
         ),
         modifier = Modifier
             .fillMaxWidth()
             .height(128.dp)
-            .background(color = Color(0xFFFFFFFF), shape = RoundedCornerShape(size = 16.dp))
+            .background(color = MaterialTheme.colorScheme.background, shape = RoundedCornerShape(size = 16.dp))
     ) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-//                .padding(start = 16.dp, top = 16.dp, end = 16.dp, bottom = 16.dp)
                 .align(Alignment.End),
             contentAlignment = Alignment.TopEnd
             ){
@@ -68,7 +62,6 @@ fun CouponElevationCard (
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.Center,
                 modifier = Modifier
-//                .offset(x = 0.dp, y = 0.dp)
                     .size(width = 64.dp, height = 24.dp)
                     .background(
                         color = when (status) {
@@ -99,7 +92,7 @@ fun CouponElevationCard (
             }
             Row (
                 verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Center,
+                horizontalArrangement = Arrangement.spacedBy(4.dp, alignment = Alignment.CenterHorizontally),
                 modifier = Modifier
                     .padding(16.dp)
             ){
@@ -108,7 +101,7 @@ fun CouponElevationCard (
                     contentDescription = "Shop Logo",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
-                        .size(200.dp)
+                        .size(86.dp)
                         .clip(CircleShape)
                 )
                 Spacer(modifier = Modifier.width(8.dp))
@@ -185,7 +178,7 @@ fun CouponElevationCard (
 //fun ReusableCardViewPreview() {
 //    CouponElevationCard(
 //        1,
-//        "STARBUCK",
+//        "STARBUCKS",
 //        "25",
 //        "20-Jan-2024",
 //        CouponStatus.Valid,
