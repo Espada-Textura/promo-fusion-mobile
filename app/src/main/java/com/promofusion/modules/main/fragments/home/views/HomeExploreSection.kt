@@ -32,7 +32,7 @@ fun HomeExploreSection(featuredShops: List<ShopData> = emptyList()) {
         ) {
             featuredShops.forEachIndexed { index, shop ->
                 ShopCard(
-                    model = "https://source.unsplash.com/random/150x15$index",
+                    model = shop.imageUrl ?: "https://source.unsplash.com/random/150x15$index",
                     title = shop.name ?: "No data",
                     description = shop.description ?: "No data",
                     promotion = "No data",

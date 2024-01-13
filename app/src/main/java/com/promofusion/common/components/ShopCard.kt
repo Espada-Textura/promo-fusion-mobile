@@ -97,30 +97,6 @@ fun ShopCard(
 
 
                 Spacer(modifier = Modifier.height(4.dp))
-
-//                Row(
-//                    horizontalArrangement = Arrangement.spacedBy(
-//                        6.dp,
-//                        Alignment.CenterHorizontally
-//                    ),
-//                    verticalAlignment = Alignment.CenterVertically,
-//                    modifier = Modifier.padding(0.dp, 4.dp)
-//                ) {
-//                    Icon(
-//                        painter = painterResource(id = R.drawable.ic_sandglass_line),
-//                        contentDescription = "Duration",
-//                        modifier = Modifier.size(16.dp),
-//                        tint = MaterialTheme.colorScheme.scrim
-//                    )
-//
-//                    Text(
-//                        text = duration,
-//                        style = MaterialTheme.typography.bodyMedium,
-//                        color = MaterialTheme.colorScheme.scrim,
-//                        fontWeight = FontWeight.Bold
-//                    )
-//                }
-
             }
         }
     }

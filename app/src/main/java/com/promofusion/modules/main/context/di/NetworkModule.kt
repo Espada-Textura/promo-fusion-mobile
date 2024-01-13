@@ -1,6 +1,7 @@
 package com.promofusion.modules.main.context.di
 
 import com.promofusion.common.constants.APIConstants
+import com.promofusion.modules.main.context.models.api.ApiInterceptor
 import com.promofusion.modules.main.context.models.api.ShopApi
 import com.promofusion.modules.main.context.models.api.ShopService
 import com.promofusion.modules.main.context.repositories.ShopRepository
@@ -10,6 +11,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -18,11 +20,15 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
+    private val client = OkHttpClient.Builder().apply {
+        addInterceptor(ApiInterceptor())
+    }.build()
+
     @Provides
     @Singleton
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(APIConstants.BASE_URL)
+            .baseUrl(APIConstants.BASE_URL).client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
