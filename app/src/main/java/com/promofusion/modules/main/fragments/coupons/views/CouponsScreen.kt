@@ -17,10 +17,12 @@ import com.promofusion.R
 import com.promofusion.common.components.HeaderTitle
 import com.promofusion.common.components.SearchWithFilter
 import com.promofusion.common.theme.PromoFusionTheme
+import com.promofusion.modules.main.fragments.coupons.models.data.Coupon
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CouponsScreen(navController: NavController? = null) {
+fun CouponsScreen(coupons: List<Coupon> = emptyList()) {
+
     Column(
         modifier = Modifier
 //            .verticalScroll(rememberScrollState())
@@ -47,15 +49,16 @@ fun CouponsScreen(navController: NavController? = null) {
         SearchWithFilter(
             modifier = Modifier.padding(16.dp)
         ) {}
-        CouponListSection()
+
+        CouponListSection(coupons)
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun CouponsScreenPreview() {
-    PromoFusionTheme {
-        CouponsScreen()
-    }
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun CouponsScreenPreview() {
+//    PromoFusionTheme {
+//        CouponsScreen()
+//    }
+//}
 

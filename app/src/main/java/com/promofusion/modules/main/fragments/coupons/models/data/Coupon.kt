@@ -3,18 +3,23 @@ package com.promofusion.modules.main.fragments.coupons.models.data
 import com.google.gson.annotations.SerializedName
 
 data class Coupon (
+
     @SerializedName("id")
-    val id: Int,
+    val id: Int?,
 
-    @SerializedName("shopName")
-    val shopName: String,
+    @SerializedName("name")
+    val name: String?,
 
-    @SerializedName("promotion")
-    val promotion: String,
+    //Later Convert To "promotionValue"
+    @SerializedName("promotionTitle")
+    val promotionTitle: String?,
 
-    @SerializedName("endAt")
-    val endAt: String,
+    @SerializedName("endDate")
+    val endDate: String?,
 
-    @SerializedName("shopUrl")
-    val shopUrl: String,
+    @SerializedName("imageUrl")
+    val imageUrl: String?,
+
+    @SerializedName("status")
+    val status: String?,
 )

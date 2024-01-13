@@ -4,6 +4,8 @@ import com.promofusion.common.constants.APIConstants
 import com.promofusion.modules.main.context.models.api.ShopApi
 import com.promofusion.modules.main.context.models.api.ShopService
 import com.promofusion.modules.main.context.repositories.ShopRepository
+import com.promofusion.modules.main.fragments.coupons.models.api.CouponApi
+import com.promofusion.modules.main.fragments.coupons.models.api.CouponService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,13 +16,21 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object HomeModule {
+object NetworkModule {
+
+    @Provides
+    @Singleton
+    fun provideRetrofit(): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl(APIConstants.BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
 
     @Provides // Telling Hilt that this func provides a dependency
     @Singleton // Telling Hilt this dependency has Singleton Scope
-    fun provideShopApiInstance(): ShopApi {
-        return Retrofit.Builder().baseUrl(APIConstants.BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create()).build().create(ShopApi::class.java)
+    fun provideShopApi(retrofit: Retrofit): ShopApi {
+        return retrofit.create(ShopApi::class.java)
     }
 
     @Provides
@@ -34,5 +44,16 @@ object HomeModule {
     fun provideShopRepository(shopService: ShopService): ShopRepository {
         return ShopRepository(shopService)
     }
-}
 
+    @Provides
+    @Singleton
+    fun provideCouponApi(retrofit: Retrofit): CouponApi {
+        return retrofit.create(CouponApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideCouponService(couponApi: CouponApi): CouponService {
+        return CouponService(couponApi)
+    }
+}
