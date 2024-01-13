@@ -4,12 +4,9 @@ import com.google.gson.annotations.SerializedName
 
 data class CouponResponse (
 
-    @SerializedName("status_code")
-    var status: Int?,
-
-    @SerializedName("message")
-    var message: String?,
+//    @SerializedName("message")
+//    var message: String?,
 
     @SerializedName("data")
-    var data: List<Coupon>?,
+    var data: List<Coupon>,
 )

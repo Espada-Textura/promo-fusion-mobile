@@ -34,7 +34,7 @@ fun ProfileInfoSection (
             contentDescription = "Profile Picture",
             contentScale = ContentScale.Crop,
             modifier = Modifier
-                .size(200.dp)
+                .size(168.dp)
                 .clip(CircleShape)
         )
         Text(

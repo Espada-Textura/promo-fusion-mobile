@@ -8,7 +8,9 @@ import javax.inject.Inject
 class CouponService @Inject constructor(private val couponApi: CouponApi){
     suspend fun getCoupons(): CouponResponse {
         return withContext(Dispatchers.IO) {
+
             val couponResponse = couponApi.getCoupons()
+            println(couponResponse)
             (couponResponse.body() as CouponResponse)
         }
     }
