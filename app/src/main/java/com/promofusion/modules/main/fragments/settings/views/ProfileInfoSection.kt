@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -26,8 +27,11 @@ fun ProfileInfoSection (
             .fillMaxWidth()
     ) {
         AsyncImage(
-            model = "https://example.com/image.jpg",
+            model = "https://cdn.discordapp.com/attachments/1027209533220728867/1195531835879473223/user.png?ex=65b454c9&is=65a1dfc9&hm=800835208310ad880a8b79120056fbc1ec7b4ea5a644247168ca71a517be1ddc&",
             contentDescription = "Profile Picture",
+            modifier = Modifier
+                .padding(0.dp, 16.dp, 0.dp, 0.dp)
+                .size(120.dp)
         )
         Text(
             text = Name,
