@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 
 import androidx.compose.material3.CardDefaults
@@ -32,16 +33,20 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.layout.ContentScale
+import coil.compose.AsyncImage
 
 import com.promofusion.common.constants.CouponStatus
 
 @Composable
 fun CouponElevationCard (
-    couponId: Int,
     shopName: String,
     promotion: String,
     expiredAt: String,
-    status: CouponStatus
+    status: String,
+    imageUrl: String,
 ) {
     ElevatedCard (
         elevation = CardDefaults.cardElevation(
@@ -67,9 +72,9 @@ fun CouponElevationCard (
                     .size(width = 64.dp, height = 24.dp)
                     .background(
                         color = when (status) {
-                            CouponStatus.Valid -> Color.Green
-                            CouponStatus.Used -> Color.Gray
-                            CouponStatus.Expired -> Color.Red
+                            "active" -> Color.Green
+                            "used" -> Color.Gray
+                            "expired" -> Color.Red
                             else -> Color.Magenta
                         },
                         shape = RoundedCornerShape(
@@ -82,9 +87,9 @@ fun CouponElevationCard (
             ) {
                 Text(
                     text = when (status) {
-                        CouponStatus.Valid -> "Valid"
-                        CouponStatus.Used -> "Used"
-                        CouponStatus.Expired -> "Expired"
+                        "active" -> "Valid"
+                        "Used" -> "Used"
+                        "expired" -> "Expired"
                         else -> "Invalid"
                     },
                     color = Color.White,
@@ -98,9 +103,13 @@ fun CouponElevationCard (
                 modifier = Modifier
                     .padding(16.dp)
             ){
-                Image(
-                    painter = painterResource(id = com.promofusion.R.drawable.ic_promos_logo_foreground),
-                    contentDescription = "Shop Logo"
+                AsyncImage(
+                    model = imageUrl,
+                    contentDescription = "Shop Logo",
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .size(200.dp)
+                        .clip(CircleShape)
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Divider(
@@ -171,14 +180,15 @@ fun CouponElevationCard (
     }
 }
 
-@Preview
-@Composable
-fun ReusableCardViewPreview() {
-    CouponElevationCard(
-        1,
-        "STARBUCK",
-        "25",
-        "20-Jan-2024",
-        CouponStatus.Valid
-    )
-}
+//@Preview
+//@Composable
+//fun ReusableCardViewPreview() {
+//    CouponElevationCard(
+//        1,
+//        "STARBUCK",
+//        "25",
+//        "20-Jan-2024",
+//        CouponStatus.Valid,
+//        imageUrl,
+//    )
+//}

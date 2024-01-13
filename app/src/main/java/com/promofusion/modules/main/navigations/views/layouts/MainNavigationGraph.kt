@@ -7,6 +7,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
+import com.promofusion.modules.main.fragments.coupons.viewmodels.CouponViewModel
 import com.promofusion.modules.main.fragments.coupons.views.CouponsScreen
 import com.promofusion.modules.main.fragments.home.viewmodels.HomeViewModel
 import com.promofusion.modules.main.fragments.home.views.HomeScreen
@@ -41,7 +42,9 @@ fun NavGraphBuilder.mainNavigationGraph(navController: NavController) {
         }
 
         composable(route = MainNavigation.Coupons.route) {
-            CouponsScreen()
+            val couponViewModel: CouponViewModel = hiltViewModel<CouponViewModel>()
+            val coupons by couponViewModel.data.collectAsState()
+            CouponsScreen(coupons)
         }
 
         composable(route = MainNavigation.Settings.route) {
