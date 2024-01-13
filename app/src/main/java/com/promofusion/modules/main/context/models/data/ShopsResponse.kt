@@ -1,6 +1,6 @@
 package com.promofusion.modules.main.context.models.data
 
-data class ShopListResponse(
+data class ShopsResponse(
     val data: List<ShopData>,
-    val status: Int?
+    val status: Int
 )

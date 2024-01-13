@@ -1,15 +1,14 @@
 package com.promofusion.modules.main.context.models.data
 
 data class ShopData(
+    val campaigns: List<Any>?,
     val createdAt: String?,
-    val cuid: String?,
+    val deleted: Boolean?,
     val description: String?,
-    val endDate: String?,
     val id: Int?,
-    val meta: ShopMeta?,
+    val imageUrl: String?,
+    val muid: String?,
     val name: String?,
-    val startDate: String?,
     val status: String?,
-    val type: String?,
     val updatedAt: String?
 )

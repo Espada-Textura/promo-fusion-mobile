@@ -11,14 +11,12 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CardElevation
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -28,12 +26,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.promofusion.R
 import com.promofusion.common.theme.PromoFusionTheme
 
 @Composable
@@ -51,7 +46,6 @@ fun ShopCard(
     title: String,
     description: String,
     promotion: String,
-    duration: String
 ) {
     Card(
         modifier = modifier, shape = shape, colors = colors, elevation = elevation, border = border
@@ -104,28 +98,28 @@ fun ShopCard(
 
                 Spacer(modifier = Modifier.height(4.dp))
 
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(
-                        6.dp,
-                        Alignment.CenterHorizontally
-                    ),
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.padding(0.dp, 4.dp)
-                ) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.ic_sandglass_line),
-                        contentDescription = "Duration",
-                        modifier = Modifier.size(16.dp),
-                        tint = MaterialTheme.colorScheme.scrim
-                    )
-
-                    Text(
-                        text = duration,
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.scrim,
-                        fontWeight = FontWeight.Bold
-                    )
-                }
+//                Row(
+//                    horizontalArrangement = Arrangement.spacedBy(
+//                        6.dp,
+//                        Alignment.CenterHorizontally
+//                    ),
+//                    verticalAlignment = Alignment.CenterVertically,
+//                    modifier = Modifier.padding(0.dp, 4.dp)
+//                ) {
+//                    Icon(
+//                        painter = painterResource(id = R.drawable.ic_sandglass_line),
+//                        contentDescription = "Duration",
+//                        modifier = Modifier.size(16.dp),
+//                        tint = MaterialTheme.colorScheme.scrim
+//                    )
+//
+//                    Text(
+//                        text = duration,
+//                        style = MaterialTheme.typography.bodyMedium,
+//                        color = MaterialTheme.colorScheme.scrim,
+//                        fontWeight = FontWeight.Bold
+//                    )
+//                }
 
             }
         }
@@ -148,7 +142,6 @@ fun ShopCardPreview() {
                 title = "Flower Shop Promotion",
                 description = "You can get your free flower extra.",
                 promotion = "Buy 1 Get 1",
-                duration = "3 days left"
             )
         }
     }

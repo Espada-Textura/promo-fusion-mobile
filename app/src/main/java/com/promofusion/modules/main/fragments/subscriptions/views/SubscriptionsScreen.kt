@@ -21,7 +21,6 @@ import com.promofusion.common.components.HeaderTitle
 import com.promofusion.common.components.SearchWithFilter
 import com.promofusion.common.components.ShopCard
 import com.promofusion.common.theme.PromoFusionTheme
-import com.promofusion.common.utils.DateTime
 import com.promofusion.modules.main.context.models.data.ShopData
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -55,9 +54,7 @@ fun SubscriptionsScreen(shops: List<ShopData> = emptyList()) {
                     model = "https://source.unsplash.com/random/150x15$index",
                     title = shop.name ?: "No data",
                     description = shop.description ?: "No data",
-                    promotion = shop.type ?: "No data",
-                    duration = shop.endDate?.let { (DateTime.getFormattedDate(it)) }
-                        ?: "No data",
+                    promotion = shop.status ?: "No data",
                     modifier = Modifier.height(IntrinsicSize.Min)
                 )
             }

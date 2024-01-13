@@ -25,8 +25,6 @@ class HomeViewModel @Inject constructor(
             try {
                 val res = shopRepository.getFeaturedShop()
                 _featuredShops.value = res.data
-                Log.d("SHOP", _featuredShops.value.toString())
-
             } catch (err: Exception) {
                 Log.e("SHOP", err.toString())
             }

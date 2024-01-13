@@ -26,10 +26,10 @@ fun HomeFeaturedSection(featuredShops: List<ShopData>) {
             featuredShops.forEachIndexed { index, shop ->
                 item {
                     FeaturedShopCard(
-                        promotionType = shop.type ?: "No data",
-                        shopTitle = shop.name ?: "[Empty Shop Name]",
-                        shopDescription = shop.description ?: "[Empty Description]",
-                        imageURL = "https://source.unsplash.com/random/300x30$index"
+                        promotionType = shop.status ?: "No data",
+                        shopTitle = shop.name ?: "Empty Shop Name",
+                        shopDescription = shop.description ?: "Empty Description",
+                        imageURL = shop.imageUrl ?: "No data"
                     )
 
                     Spacer(modifier = Modifier.width(24.dp))
