@@ -30,7 +30,7 @@ fun ProfileInfoSection (
             .fillMaxWidth()
     ) {
         AsyncImage(
-            model = "https://example.com/image.jpg",
+            model = "https://cdn.discordapp.com/attachments/1027209533220728867/1195531835879473223/user.png?ex=65b454c9&is=65a1dfc9&hm=800835208310ad880a8b79120056fbc1ec7b4ea5a644247168ca71a517be1ddc&",
             contentDescription = "Profile Picture",
             contentScale = ContentScale.Crop,
             modifier = Modifier

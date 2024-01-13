@@ -41,6 +41,7 @@ import com.promofusion.R
 import com.promofusion.common.components.ContentSection
 import com.promofusion.common.components.ProfileHeader
 import com.promofusion.common.theme.PromoFusionTheme
+import com.promofusion.common.utils.SessionManager
 import com.promofusion.modules.main.fragments.settings.viewmodels.SettingViewModel
 
 @Composable
@@ -48,6 +49,9 @@ fun SettingsScreen(navController: NavController) {
     val settingViewModel = viewModel<SettingViewModel>()
     settingViewModel.setAppContext(LocalContext.current)
     settingViewModel.setNavController(navController)
+
+    val email = SessionManager(LocalContext.current).fetchCurrentUser()?.email ?: "email";
+    val name = SessionManager(LocalContext.current).fetchCurrentUser()?.username ?: "Name";
 
     Column(modifier = Modifier.fillMaxWidth()) {
         ProfileHeader (
@@ -62,8 +66,8 @@ fun SettingsScreen(navController: NavController) {
             )
         ) {
             ProfileInfoSection(
-                Name = "Jonh Doe",
-                Email = "email@email.com"
+                Name = email,
+                Email = name
             )
             GeneralSettingSection()
             HelpSettingSection()

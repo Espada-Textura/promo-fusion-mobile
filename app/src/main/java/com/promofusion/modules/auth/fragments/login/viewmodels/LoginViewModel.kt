@@ -36,7 +36,7 @@ class LoginViewModel : ViewModel() {
     fun handleOnLoginSuccess(response: LoginResponse) {
         SessionManager(context!!).saveAuthToken(response.data.accessToken)
         SessionManager(context!!).saveCurrentUser(
-            SessionManager.UserData(response.data.id, response.data.email, response.data.email)
+            SessionManager.UserData(response.data.id, response.data.username, response.data.email)
         )
         navController?.navigate(MainNavigation.Home.route)
     }
